@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         Patient p1 = new Patient(123456789, "Pasa");
 
-        ref.child("Patients").child(p1.toString()).setValue(p1);
+        ref.child("Patients").child("p1").setValue(p1);
 
     }
 }
