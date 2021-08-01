@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "634544192830",
+    "firebase_url": "https://cscb07-project-appointment-app-default-rtdb.firebaseio.com",
+    "project_id": "cscb07-project-appointment-app",
+    "storage_bucket": "cscb07-project-appointment-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634544192830:android:982e9314f7718120b6806f",
+        "android_client_info": {
+          "package_name": "com.example.cscb07project_patientappointmentapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "634544192830-ccquv6i37fhsau6pgcs9vtumfl0gak8c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTpIyY9MzcAyB66cLr5bkhQS9uRfjRZts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "634544192830-ccquv6i37fhsau6pgcs9vtumfl0gak8c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
