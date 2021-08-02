@@ -23,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();
 
-        Patient p1 = new Patient(123456789, "Pasa");
+        Patient p2 = new Patient(666666, "Hahah");
 
-        ref.child("Patients").child("p1").setValue(p1);
+        ref.child("Patients").child("p2").setValue(p2);
 
     }
 }

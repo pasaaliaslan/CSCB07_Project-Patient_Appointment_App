@@ -9,7 +9,14 @@ public class Patient {
         this.name = name;
     }
 
-    //HI
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+//HI
 
     public long getId() {
         return id;
