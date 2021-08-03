@@ -10,11 +10,13 @@ public abstract class Person {
 
     String fullName;
     String username;
+    String password;
     Gender gender;
 
-    public Person(String fullName, String username, String gender){
+    public Person(String fullName, String username, String password, String gender){
         this.fullName = fullName;
         this.username = username;
+        this.password = password;
         this.gender = Gender.valueOf(gender.toUpperCase());
     }
 
@@ -33,6 +35,10 @@ public abstract class Person {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public String getPassword() { return password; }
+
+    public void setPassword(String password) { this.password = password; }
 
     public Gender getGender() {
         return gender;
