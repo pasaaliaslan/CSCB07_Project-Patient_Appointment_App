@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // HIHIHIH
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -23,9 +23,11 @@ public class MainActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();
 
-        Patient p2 = new Patient(666666, "Hahah");
+        Patient p5 = new Patient("asadasd", "lolol", "male");
+        Doctor d1 = new Doctor("first doctor", "frstdctr", "male","immunology");
 
-        ref.child("Patients").child("p2").setValue(p2);
+        ref.child("Patients").child("p5").setValue(p5);
+        ref.child("Doctors").child("d1").setValue(d1);
 
     }
 }
