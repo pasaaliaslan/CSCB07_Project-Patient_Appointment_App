@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // HIHIHIH
+
+        // Alina says hello world from 2nd clone
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
