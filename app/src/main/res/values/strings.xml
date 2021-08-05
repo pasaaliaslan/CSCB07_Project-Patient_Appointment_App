@@ -6,6 +6,8 @@
     <string name="Doctor">Doctor</string>
     <string name="Patient">Patient</string>
     <string name="Login_as">Login as:</string>
+    <string name="Patient_next_appointments">Your next appointments:</string>
+    <string name="place_holder">place holder</string>
     <string name="NextAppointment">Your Next Appointment: </string>
     <string name="ExampleDate"> Wed Aug 08 2021 09:00 EDT </string>
     <string name="SeeAll"> See All </string>
