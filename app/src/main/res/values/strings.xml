@@ -84,5 +84,6 @@
     <string name="Appointment4"> Appointment 4 </string>
     <string name="Appointment5"> Appointment 5 </string>
     <string name="Appointment6"> Appointment 6 </string>
+    <string name="Book_appt"> Book Appointment </string>
 
 </resources>
