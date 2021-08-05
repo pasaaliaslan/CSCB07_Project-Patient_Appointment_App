@@ -26,8 +26,10 @@ public class MainActivity extends AppCompatActivity {
         Patient p5 = new Patient("asadasd", "lolol", "CuteRabbit38", "male");
         Doctor d1 = new Doctor("first doctor", "frstdctr", "GoofyDoggie96", "male","immunology");
 
-        ref.child("Patients").child("p5").setValue(p5);
-        ref.child("Doctors").child("d1").setValue(d1);
+//        ref.child("Patients").child("p5").setValue(p5);
+//        ref.child("Doctors").child("d1").setValue(d1);
+        d1.createAppointments(3,5);
+        System.out.println(d1.fullName);
 
     }
 }

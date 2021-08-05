@@ -6,4 +6,8 @@
     <string name="Doctor">Doctor</string>
     <string name="Patient">Patient</string>
     <string name="Login_as">Login as:</string>
+    <string name="BookAppointment">Book Appointment</string>
+    <string name="ViewAppointment">View Appointment</string>
+    <string name="hold">hold</string>
+    <string name="person_icon_mimics_ta">Person icon mimics TA</string>
 </resources>
