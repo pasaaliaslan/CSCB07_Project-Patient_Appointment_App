@@ -5,11 +5,12 @@
     <string name="Password">Password</string>
     <string name="Doctor">Doctor</string>
     <string name="Patient">Patient</string>
-    <string name="Appointment1">button:</string>
-    <string name="Appointment2">button2:</string>
-    <string name="Appointment3">button3:</string>
-    <string name="Appointment4">button4:</string>
     <string name="Login_as">Login as:</string>
+
+    <string name="BookAppointment">Book Appointment</string>
+    <string name="ViewAppointment">View Appointment</string>
+    <string name="hold">hold</string>
+    <string name="person_icon_mimics_ta">Person icon mimics TA</string>
 
     <string name="Specialization_Filter">Spinner</string>
     <string name="Doctor_List">Spinner</string>
@@ -78,6 +79,7 @@
     <string name="ExampleDate"> Wed Aug 08 2021 09:00 EDT </string>
     <string name="SeeAll"> See All </string>
     <string name="Profile"> Profile </string>
+    <string name="Appointment1"> Appointment 1 </string>  
     <string name="Appointment2"> Appointment 2 </string>
     <string name="Appointment3"> Appointment 3 </string>
     <string name="Appointment4"> Appointment 4 </string>
