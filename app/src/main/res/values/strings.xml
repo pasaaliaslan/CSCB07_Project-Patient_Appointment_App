@@ -10,6 +10,7 @@
     <string name="Appointment3">button3:</string>
     <string name="Appointment4">button4:</string>
     <string name="Login_as">Login as:</string>
+
     <string name="Specialization_Filter">Spinner</string>
     <string name="Doctor_List">Spinner</string>
     <string name="Gender">Spinner</string>
@@ -69,5 +70,18 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+
+
+    <string name="Patient_next_appointments">Your next appointments:</string>
+    <string name="place_holder">place holder</string>
+    <string name="NextAppointment">Your Next Appointment: </string>
+    <string name="ExampleDate"> Wed Aug 08 2021 09:00 EDT </string>
+    <string name="SeeAll"> See All </string>
+    <string name="Profile"> Profile </string>
+    <string name="Appointment2"> Appointment 2 </string>
+    <string name="Appointment3"> Appointment 3 </string>
+    <string name="Appointment4"> Appointment 4 </string>
+    <string name="Appointment5"> Appointment 5 </string>
+    <string name="Appointment6"> Appointment 6 </string>
 
 </resources>
