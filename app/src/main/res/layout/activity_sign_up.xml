@@ -23,11 +23,11 @@
         app:layout_constraintVertical_bias="0.638" />
 
     <TextView
-        android:id="@+id/SignUpText"
+        android:id="@+id/SignUpAsPatientText"
         android:layout_width="357dp"
         android:layout_height="70dp"
         android:onClick="CreatePatientAccount"
-        android:text="@string/Sign_Up"
+        android:text="@string/SignUpAsPatient"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

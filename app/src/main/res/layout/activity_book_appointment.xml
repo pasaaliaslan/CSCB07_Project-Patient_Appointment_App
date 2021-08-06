@@ -100,5 +100,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
 
+    <Button
+        android:id="@+id/BookApptSignOutButton"
+        android:layout_width="84dp"
+        android:layout_height="41dp"
+        android:gravity="center"
+        android:onClick="signOutFromBookAppts"
+        android:text="@string/Signout"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.953"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.008" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

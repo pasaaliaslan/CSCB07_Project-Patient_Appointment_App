@@ -46,16 +46,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
     /** Called when the user taps the Patient button */
     public void UserLogin(View view) {
-
 
         EditText editTextUsername = (EditText) findViewById(R.id.MainUsername);
         String username = editTextUsername.getText().toString();
 
         EditText editTextPassword = (EditText) findViewById(R.id.MainPassword);
         String password = editTextPassword.getText().toString();
-
 
         if (username.equals("") ) {
             editTextUsername.setError("Must enter username");
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("IN LOGIN CURRENT USER IS NULL\n");
         }
         else{
-            System.out.println("IN LOGIN CURRENT USER NOT NULL\n");
+            System.out.println("IN LOGIN CURRENT USER NOT NULL ...... email adress: " + FirebaseAuth.getInstance().getCurrentUser().getEmail());
         }
 
 
@@ -80,15 +80,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull  Task<AuthResult> task) {
                 if (task.isSuccessful()){
-//                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//                    if (user != null){
-//
-//                    }
                     String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-//                    String emailadd = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-//                    String emailadd2 = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
-//                    System.out.println("email of curr user: " + emailadd + "||||| name: " + emailadd2);
 
                     DatabaseReference docRef = FirebaseDatabase.getInstance().getReference("Doctors/" + uid);
                     docRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -96,11 +88,11 @@ public class MainActivity extends AppCompatActivity {
                         public void onDataChange(DataSnapshot snapshot) {
                             if (snapshot.exists()) {
                                 System.out.println("child is a doctor\n");
-                                start_DocMain_activ();
+                                updateUIDoc();
                             }
                             else{
                                 System.out.println("child is a patient\n");
-                                start_PatientMain_activ();
+                                updateUIPatient();
                             }
                         }
                         @Override
@@ -120,12 +112,12 @@ public class MainActivity extends AppCompatActivity {
 //        startActivity(intent);
     }
 
-    public void start_DocMain_activ(){
+    public void updateUIDoc(){
         Intent intent = new Intent(this, DoctorMain.class);
         startActivity(intent);
     }
 
-    public void start_PatientMain_activ(){
+    public void updateUIPatient(){
         Intent intent = new Intent(this, BookAppointmentActivity.class);
         startActivity(intent);
     }
@@ -185,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
 
     /** Called when the user taps the SIGN UP as DOCTOR button */
     public void SignUpAsDoctor(View view) {
-        Intent intent = new Intent(this, SignUpActivity.class);
+        Intent intent = new Intent(this, SignUpDoctor.class);
         startActivity(intent);
     }
 }

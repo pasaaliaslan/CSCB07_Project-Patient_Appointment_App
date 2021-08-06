@@ -17,29 +17,36 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignUpDoctor extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_sign_up_doctor);
     }
 
-    public int verifySignUpInfoPatient(int fulln, int usern, int pass, int passConfirm){
+    public int verifySignUpInfoDoc(int fulln, int usern, int pass, int passConfirm){
+        System.out.println("got to verify doc sign up info\n");
 
         EditText editTextFullName = (EditText) findViewById(fulln);
         String fullname = editTextFullName.getText().toString();
 
-        System.out.println("come catch me \n");
+        System.out.println("got step 2\n");
 
         EditText editTextUsername = (EditText) findViewById(usern);
         String username = editTextUsername.getText().toString();
 
+        System.out.println("got step 3\n");
+
         EditText editTextPassword = (EditText) findViewById(pass);
         String password = editTextPassword.getText().toString();
 
+        System.out.println("got step 4\n");
+
         EditText editTextConfirmPassword = (EditText) findViewById(passConfirm);
         String passwordConfirm = editTextConfirmPassword.getText().toString();
+
+        System.out.println("got step 5\n");
 
         if (fullname.equals("")){
             editTextFullName.setError("Must enter fullname");
@@ -61,26 +68,32 @@ public class SignUpActivity extends AppCompatActivity {
             editTextConfirmPassword.setError("Passwords must match");
             return 1;
         }
+        System.out.println("got to the part\n");
         return 0;
+
     }
 
     /** Called when the user taps the CREATE ACCOUNT button */
-    public void CreatePatientAccount(View view) {
-        Intent intent = new Intent(this, PatientNextAppointments.class);
+    public void CreateDoctorAccount(View view) {
+        Intent intent = new Intent(this, DoctorMain.class);
 
-        int success = verifySignUpInfoPatient(R.id.SignUpFullName, R.id.SignUpUsername, R.id.SignUpPassword, R.id.SignUpPasswordConfirm);
+        int success = verifySignUpInfoDoc(R.id.signUpFullNameDoc, R.id.signUpUsernameDoc, R.id.signUpPasswordDoc, R.id.signUpPasswordConfirmDoc);
         if (success == 1){
+            System.out.println("beachy \n");
             return;
         }
-        EditText editTextFullName = (EditText) findViewById(R.id.SignUpFullName);
+        System.out.println("where am i getting lost\n");
+        EditText editTextFullName = (EditText) findViewById(R.id.signUpFullNameDoc);
         String fullname = editTextFullName.getText().toString();
-        EditText editTextUsername = (EditText) findViewById(R.id.SignUpUsername);
+        EditText editTextUsername = (EditText) findViewById(R.id.signUpUsernameDoc);
         String username = editTextUsername.getText().toString();
-        EditText editTextPassword = (EditText) findViewById(R.id.SignUpPassword);
+        EditText editTextPassword = (EditText) findViewById(R.id.signUpPasswordDoc);
         String password = editTextPassword.getText().toString();
 
-        Spinner spinner = (Spinner) findViewById(R.id.GenderSpinner);
-        String gender = String.valueOf(spinner.getSelectedItem());
+        Spinner genderSpinner = (Spinner) findViewById(R.id.genderSpinnerDoc);
+        String gender = String.valueOf(genderSpinner.getSelectedItem());
+        Spinner specializationSpinner = (Spinner) findViewById(R.id.doctorSpecializationSignUpDoc);
+        String specialization = String.valueOf(specializationSpinner.getSelectedItem());
 
 
         System.out.println("got here\n");
@@ -90,10 +103,10 @@ public class SignUpActivity extends AppCompatActivity {
             System.out.println("CURRENT USER IS NULL\n");
         }
         else{
-            System.out.println("CURRENT USER NOT NULL\n");
+            System.out.println("CURRENT USER NOT NULL ...... email adress: " + FirebaseAuth.getInstance().getCurrentUser().getEmail() + "\n");
         }
 
-
+        System.out.println("want to create uder : username: " + username + ", password: " + password + "\n");
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth.createUserWithEmailAndPassword(username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -102,9 +115,8 @@ public class SignUpActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
                     //create patient object, add to firebase
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-
-                    Patient p1 = new Patient(fullname, username, password, gender);
-                    ref.child("Patients").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(p1);
+                    Doctor p1 = new Doctor(fullname, username, password, gender, specialization);
+                    ref.child("Doctors").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(p1);
 
                     startActivity(intent);
 
@@ -113,6 +125,24 @@ public class SignUpActivity extends AppCompatActivity {
                     System.out.println("Error creating new user -by alina\n");
                 }
             }
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                if (e instanceof FirebaseAuthInvalidCredentialsException) {
+//                    notifyUser("Invalid password");
+//                } else if (e instanceof FirebaseAuthInvalidUserException) {
+//
+//                    String errorCode =
+//                            ((FirebaseAuthInvalidUserException) e).getErrorCode();
+//
+//                    if (errorCode.equals("ERROR_USER_NOT_FOUND")) {
+//                        notifyUser("No matching account found");
+//                    } else if (errorCode.equals("ERROR_USER_DISABLED")) {
+//                        notifyUser("User account has been disabled");
+//                    } else {
+//                        notifyUser(e.getLocalizedMessage());
+//                    }
+//                }
+//            }
         });
 //        FirebaseUser fer = FirebaseAuth.getInstance().getCurrentUser();
 //        if (fer == null){

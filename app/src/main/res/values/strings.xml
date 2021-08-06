@@ -10,7 +10,7 @@
     <!--    <string name="Appointment2">button2:</string>-->
     <!--    <string name="Appointment3">button3:</string>-->
     <!--    <string name="Appointment4">button4:</string>-->
-<!--    <string name="Login_as">Login as:</string>-->
+    <!--    <string name="Login_as">Login as:</string>-->
 
     <string name="Specialization_Filter">Spinner</string>
     <string name="Doctor_List">Spinner</string>
@@ -87,9 +87,11 @@
     <string name="Book_appt"> Book Appointment </string>
 
     <string name="DontHaveAccount"> Don\'t have an account? </string>
-    <string name="Sign_Up"> Welcome! Let\'s SIGN UP as a PATIENT </string>
+    <string name="SignUpAsPatient"> Welcome! Let\'s SIGN UP as a PATIENT </string>
+    <string name="SignUpAsDoctor"> Welcome! Let\'s SIGN UP as a DOCTOR </string>
     <string name="CreateAccountPatient"> Create Account as PATIENT </string>
     <string name="CreateAccountDoc"> Create Account as DOCTOR </string>
     <string name="FullName"> Full Name </string>
 
+    <string name="Signout"> Signout </string>
 </resources>
