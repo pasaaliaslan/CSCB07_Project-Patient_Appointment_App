@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -86,4 +87,11 @@ public class BookAppointmentActivity extends AppCompatActivity //implements Adap
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        TextView textview = (TextView) findViewById(R.id.PatientLoggedInNextAppts);
+//        textview.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+//    }
 }

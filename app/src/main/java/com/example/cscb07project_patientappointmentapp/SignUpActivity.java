@@ -113,7 +113,6 @@ public class SignUpActivity extends AppCompatActivity {
                 else{
                     System.out.println("Error creating new user -by alina\n");
                     Toast.makeText(SignUpActivity.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                    Toast.makeText(SignUpActivity.this, "WOOOOHOOOOOOOOO", Toast.LENGTH_SHORT).show();
                 }
             }
         });

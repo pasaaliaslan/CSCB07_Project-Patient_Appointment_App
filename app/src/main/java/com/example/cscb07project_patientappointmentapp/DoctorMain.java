@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -27,7 +28,14 @@ public class DoctorMain extends AppCompatActivity {
         }
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        TextView textview = (TextView) findViewById(R.id.doctorLoggedInDoctorMain);
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            textview.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        }
     }
 }

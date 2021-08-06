@@ -97,6 +97,8 @@ public class SignUpDoctor extends AppCompatActivity {
         Spinner specializationSpinner = (Spinner) findViewById(R.id.doctorSpecializationSignUpDoc);
         String specialization = String.valueOf(specializationSpinner.getSelectedItem());
 
+
+
         SignupDocCheckIfCurrUserNull();
 
         System.out.println("want to create uder : username: " + username + ", password: " + password + "\n");
@@ -138,6 +140,7 @@ public class SignUpDoctor extends AppCompatActivity {
 //                }
 //            }
         });
+//        System.out.println("EMAIL: " + FirebaseAuth.getInstance().getCurrentUser().getEmail() + ", SPECIALIZATION: " + specialization + "\n");
         //@org.jetbrains.annotations.NotNull
     }
 }

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CSCB07 Project - Patient Appointment App</string>
     <string name="Login">Login</string>
-    <string name="Username">Username</string>
+    <string name="Username">Email</string>
     <string name="Password">Password</string>
     <string name="PasswordConfirmation">Confirm Password</string>
     <string name="Doctor">Doctor</string>
@@ -17,7 +17,6 @@
     <string name="Gender">Spinner</string>
 
     <string-array name="SpecializationFilter">
-        <item>Specialization</item>
         <item>IMMUNOLOGY</item>
         <item>ANESTHESIOLOGY</item>
         <item>DIAGNOSTIC_RADIOLOGY</item>
@@ -94,4 +93,7 @@
     <string name="FullName"> Full Name </string>
 
     <string name="Signout"> Signout </string>
+    <string name="LoggedInAs"> Logged in as: </string>
+    <string name="GenderString"> Gender: </string>
+    <string name="SpecializationString"> Specialization: </string>
 </resources>
