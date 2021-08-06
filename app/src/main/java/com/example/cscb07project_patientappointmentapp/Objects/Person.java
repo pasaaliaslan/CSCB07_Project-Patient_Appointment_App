@@ -1,6 +1,4 @@
-package com.example.cscb07project_patientappointmentapp;
-
-import java.util.Locale;
+package com.example.cscb07project_patientappointmentapp.Objects;
 
 public abstract class Person {
     protected enum Gender{

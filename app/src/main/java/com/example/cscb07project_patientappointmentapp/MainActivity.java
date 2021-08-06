@@ -1,17 +1,32 @@
 package com.example.cscb07project_patientappointmentapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
+    public static final String FULLNAME_KEY = "fullname";
+    public static final String USERNAME_KEY = "username";
+    public static final String GENDER_KEY = "gender";
+    public static final String APPOINTMENTS_KEY = "appointment";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,17 +34,39 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Write a message to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference df = db.document("/Patients/someid");
 
-        Patient p5 = new Patient("asadasd", "lolol", "CuteRabbit38", "male");
-        Doctor d1 = new Doctor("first doctor", "frstdctr", "GoofyDoggie96", "male","immunology");
+        Map<Object, Object> p1 = new HashMap<Object, Object>();
+        p1.put(FULLNAME_KEY, "Pasa Aslan");
+        p1.put(USERNAME_KEY, "pssln");
+        p1.put(GENDER_KEY, "MALE");
+        p1.put(APPOINTMENTS_KEY, new ArrayList().toArray());
+        df.set(p1).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Log.d(TAG, "Document has been saved!");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w(TAG, "Document is not saved");
+            }
+        });
 
-//        ref.child("Patients").child("p5").setValue(p5);
-//        ref.child("Doctors").child("d1").setValue(d1);
-        d1.createAppointments(3,5);
-        System.out.println(d1.fullName);
+
+
+//        // Write a message to the database
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference ref = database.getReference();
+//
+//        Patient p5 = new Patient("asadasd", "lolol", "CuteRabbit38", "male");
+//        Doctor d1 = new Doctor("first doctor", "frstdctr", "GoofyDoggie96", "male", "immunology");
+//
+////        ref.child("Patients").child("p5").setValue(p5);
+////        ref.child("Doctors").child("d1").setValue(d1);
+//        d1.createAppointments(3, 5);
+//        System.out.println(d1.fullName);
 
     }
 }
