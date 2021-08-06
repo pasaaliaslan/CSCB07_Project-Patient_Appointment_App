@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,28 +27,28 @@ public class SignUpDoctor extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up_doctor);
     }
 
+    public int SignupDocCheckIfCurrUserNull(){
+        FirebaseUser f = FirebaseAuth.getInstance().getCurrentUser();
+        if (f == null){
+            System.out.println("SIGNUP DOC: CURRENT USER IS NULL\n");
+            return 0;
+        }
+        else{
+            System.out.println("SIGNUP DOC: CURRENT USER NOT NULL ...... email adress: " + FirebaseAuth.getInstance().getCurrentUser().getEmail());
+            return 1;
+        }
+    }
+
     public int verifySignUpInfoDoc(int fulln, int usern, int pass, int passConfirm){
-        System.out.println("got to verify doc sign up info\n");
 
         EditText editTextFullName = (EditText) findViewById(fulln);
         String fullname = editTextFullName.getText().toString();
-
-        System.out.println("got step 2\n");
-
         EditText editTextUsername = (EditText) findViewById(usern);
         String username = editTextUsername.getText().toString();
-
-        System.out.println("got step 3\n");
-
         EditText editTextPassword = (EditText) findViewById(pass);
         String password = editTextPassword.getText().toString();
-
-        System.out.println("got step 4\n");
-
         EditText editTextConfirmPassword = (EditText) findViewById(passConfirm);
         String passwordConfirm = editTextConfirmPassword.getText().toString();
-
-        System.out.println("got step 5\n");
 
         if (fullname.equals("")){
             editTextFullName.setError("Must enter fullname");
@@ -60,6 +62,10 @@ public class SignUpDoctor extends AppCompatActivity {
             editTextPassword.setError("Must enter password");
             return 1;
         }
+        if (password.length() < 6){
+            editTextPassword.setError("Password must be at least 6 characters long");
+            return 1;
+        }
         if (passwordConfirm.equals("")){
             editTextConfirmPassword.setError("Must confirm password");
             return 1;
@@ -68,9 +74,7 @@ public class SignUpDoctor extends AppCompatActivity {
             editTextConfirmPassword.setError("Passwords must match");
             return 1;
         }
-        System.out.println("got to the part\n");
         return 0;
-
     }
 
     /** Called when the user taps the CREATE ACCOUNT button */
@@ -79,10 +83,8 @@ public class SignUpDoctor extends AppCompatActivity {
 
         int success = verifySignUpInfoDoc(R.id.signUpFullNameDoc, R.id.signUpUsernameDoc, R.id.signUpPasswordDoc, R.id.signUpPasswordConfirmDoc);
         if (success == 1){
-            System.out.println("beachy \n");
             return;
         }
-        System.out.println("where am i getting lost\n");
         EditText editTextFullName = (EditText) findViewById(R.id.signUpFullNameDoc);
         String fullname = editTextFullName.getText().toString();
         EditText editTextUsername = (EditText) findViewById(R.id.signUpUsernameDoc);
@@ -95,25 +97,15 @@ public class SignUpDoctor extends AppCompatActivity {
         Spinner specializationSpinner = (Spinner) findViewById(R.id.doctorSpecializationSignUpDoc);
         String specialization = String.valueOf(specializationSpinner.getSelectedItem());
 
-
-        System.out.println("got here\n");
-        // authentication check
-        FirebaseUser f = FirebaseAuth.getInstance().getCurrentUser();
-        if (f == null){
-            System.out.println("CURRENT USER IS NULL\n");
-        }
-        else{
-            System.out.println("CURRENT USER NOT NULL ...... email adress: " + FirebaseAuth.getInstance().getCurrentUser().getEmail() + "\n");
-        }
+        SignupDocCheckIfCurrUserNull();
 
         System.out.println("want to create uder : username: " + username + ", password: " + password + "\n");
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth.createUserWithEmailAndPassword(username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                System.out.println("got here\n");
+
                 if (task.isSuccessful()){
-                    //create patient object, add to firebase
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                     Doctor p1 = new Doctor(fullname, username, password, gender, specialization);
                     ref.child("Doctors").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(p1);
@@ -123,6 +115,8 @@ public class SignUpDoctor extends AppCompatActivity {
                 }
                 else{
                     System.out.println("Error creating new user -by alina\n");
+//                    Log.w("ALINA'S MAIN ACTIVITY", "createUserWithEmail : failure - by alina", task.getException());
+                    Toast.makeText(SignUpDoctor.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
 //            @Override
@@ -144,16 +138,6 @@ public class SignUpDoctor extends AppCompatActivity {
 //                }
 //            }
         });
-//        FirebaseUser fer = FirebaseAuth.getInstance().getCurrentUser();
-//        if (fer == null){
-//            System.out.println("after creating user: curr user is null\n");
-//        }
-//        else{
-//            System.out.println("after creating user: curr user is not null\n");
-//        }
         //@org.jetbrains.annotations.NotNull
-
-//        intent.putExtra(EXTRA_MESSAGE, message);
-//        startActivity(intent);
     }
 }

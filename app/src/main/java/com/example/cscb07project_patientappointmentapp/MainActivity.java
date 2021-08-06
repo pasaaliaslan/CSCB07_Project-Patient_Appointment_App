@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (LoginCheckIfCurrUserNull() == 1){
+            // curr user != null
+            checkIfDocOrPat();
+        }
+
+
         // Write a message to the database
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
 //        DatabaseReference ref = database.getReference();
@@ -41,22 +48,50 @@ public class MainActivity extends AppCompatActivity {
 //
 //        ref.child("Patients").child("p5").setValue(p5);
 //        ref.child("Doctors").child("d1").setValue(d1);
-
-
-
     }
 
+    public void checkIfDocOrPat(){
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+        DatabaseReference docRef = FirebaseDatabase.getInstance().getReference("Doctors/" + uid);
+        docRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    System.out.println("user is a doctor\n");
+                    updateUIDoc();
+                }
+                else{
+                    System.out.println("user is a patient\n");
+                    updateUIPatient();
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                System.out.println("user is not doc or patient\n");
+            }
+        });
+    }
+
+    public int LoginCheckIfCurrUserNull(){
+        FirebaseUser f = FirebaseAuth.getInstance().getCurrentUser();
+        if (f == null){
+            System.out.println("IN LOGIN CURRENT USER IS NULL\n");
+            return 0;
+        }
+        else{
+            System.out.println("IN LOGIN CURRENT USER NOT NULL ...... email adress: " + FirebaseAuth.getInstance().getCurrentUser().getEmail());
+            return 1;
+        }
+    }
 
     /** Called when the user taps the Patient button */
     public void UserLogin(View view) {
 
         EditText editTextUsername = (EditText) findViewById(R.id.MainUsername);
         String username = editTextUsername.getText().toString();
-
         EditText editTextPassword = (EditText) findViewById(R.id.MainPassword);
         String password = editTextPassword.getText().toString();
-
         if (username.equals("") ) {
             editTextUsername.setError("Must enter username");
             return;
@@ -66,50 +101,21 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        FirebaseUser f = FirebaseAuth.getInstance().getCurrentUser();
-        if (f == null){
-            System.out.println("IN LOGIN CURRENT USER IS NULL\n");
-        }
-        else{
-            System.out.println("IN LOGIN CURRENT USER NOT NULL ...... email adress: " + FirebaseAuth.getInstance().getCurrentUser().getEmail());
-        }
-
-
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth.signInWithEmailAndPassword(username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull  Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-                    DatabaseReference docRef = FirebaseDatabase.getInstance().getReference("Doctors/" + uid);
-                    docRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot snapshot) {
-                            if (snapshot.exists()) {
-                                System.out.println("child is a doctor\n");
-                                updateUIDoc();
-                            }
-                            else{
-                                System.out.println("child is a patient\n");
-                                updateUIPatient();
-                            }
-                        }
-                        @Override
-                        public void onCancelled(DatabaseError error) {
-                            System.out.println("it failed - alina\n");
-                        }
-                    });
+                    checkIfDocOrPat();
                 }
                 else{
                     System.out.println("login not successful\n");
-                    editTextPassword.setError("Login was not sucessful");
+//                    editTextPassword.setError("Login was not sucessful");
+                    Toast.makeText(MainActivity.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
         });
-
     //@org.jetbrains.annotations.NotNull
-//        startActivity(intent);
     }
 
     public void updateUIDoc(){

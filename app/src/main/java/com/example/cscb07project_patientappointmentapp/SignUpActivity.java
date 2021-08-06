@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -111,6 +112,8 @@ public class SignUpActivity extends AppCompatActivity {
                 }
                 else{
                     System.out.println("Error creating new user -by alina\n");
+                    Toast.makeText(SignUpActivity.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignUpActivity.this, "WOOOOHOOOOOOOOO", Toast.LENGTH_SHORT).show();
                 }
             }
         });
