@@ -1,5 +1,7 @@
 package com.example.cscb07project_patientappointmentapp.Objects;
 
+import java.util.ArrayList;
+
 public abstract class Person {
     protected enum Gender{
         MALE,
@@ -10,12 +12,14 @@ public abstract class Person {
     String username;
     String password;
     Gender gender;
+    ArrayList<Appointment> appointments;
 
     public Person(String fullName, String username, String password, String gender){
         this.fullName = fullName;
         this.username = username;
         this.password = password;
         this.gender = Gender.valueOf(gender.toUpperCase());
+        this.appointments = new ArrayList<Appointment>();
     }
 
     public String getFullName() {

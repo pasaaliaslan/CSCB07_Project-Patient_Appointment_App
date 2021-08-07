@@ -32,7 +32,6 @@ public class Doctor extends Person {
     }
 
     Specialty specialty;
-    ArrayList<Appointment> appointments;
     Timestamp startDuty;
     Timestamp endDuty;
 
@@ -41,19 +40,15 @@ public class Doctor extends Person {
         this.specialty = Specialty.valueOf(specialty.toUpperCase());
         this.startDuty = startDuty;
         this.endDuty = endDuty;
-        this.appointments = new ArrayList<Appointment>();
     }
 
-    // 1st method
-    public Appointment seeNextAppointment(){
-        // appointments.sort();
-        return appointments.get(0);
+    public ArrayList<Appointment> seeNextAppointment(){
+        ArrayList<Appointment> nextAppointments = new ArrayList<Appointment>();
+
+        for (int i = 0; i < 5 || i < appointments.size(); i++){
+            nextAppointments.add(appointments.get(i));
+        }
+
+        return nextAppointments;
     }
-
-    // 2nd method
-    public void sortAppointment(){
-        // Sort by timestamps
-    }
-
-
 }

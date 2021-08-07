@@ -10,18 +10,36 @@ import java.util.Map;
 
 public class Patient extends Person {
 
-    ArrayList<Appointment> appointments;
-
     public Patient(String fullName, String username, String password, String gender) {
         super(fullName, username, password, gender);
+    }
+
+    private void addAppointmentToAppointments (Appointment appointment, Person p) {
+        int n = p.appointments.size();
+
+        // Base Case
+        if (p.appointments == null || p.appointments.size() == 0 || appointment.startTime.after(p.appointments.get(n-1).startTime)){
+            p.appointments.add(appointment);
+        }
+
+        // Induction Step
+        else {
+            for (int i = 0; i < p.appointments.size(); i++) {
+                if (p.appointments.get(i).startTime.after(appointment.startTime)){
+                    p.appointments.add(i, appointment);
+                    break;
+                }
+            }
+        }
     }
 
     public void bookAppointment(Timestamp apppointmentTime, String doctorID, String description) {
         Doctor doctor = DoctorIDtoDoctorAdapter.getDoctor(doctorID);
         Appointment appointment = new Appointment(doctor,this, apppointmentTime, description);
 
-        doctor.appointments.add(appointment);
-        this.appointments.add(appointment);
+        addAppointmentToAppointments(appointment, doctor);
+        addAppointmentToAppointments(appointment, this);
+
     }
 
     public Map<Doctor, ArrayList<Timestamp>> displayAvailabilityOfDoctors(ArrayList<Doctor> doctors) {
