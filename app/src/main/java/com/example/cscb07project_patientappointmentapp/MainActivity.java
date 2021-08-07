@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.cscb07project_patientappointmentapp.Objects.Doctor;
+import com.example.cscb07project_patientappointmentapp.Objects.Patient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.Timestamp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -17,6 +20,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,34 +38,41 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference df = db.document("/Patients/someid");
-
-        Map<Object, Object> p1 = new HashMap<Object, Object>();
-        p1.put(FULLNAME_KEY, "Pasa Aslan");
-        p1.put(USERNAME_KEY, "pssln");
-        p1.put(GENDER_KEY, "MALE");
-        p1.put(APPOINTMENTS_KEY, new ArrayList().toArray());
-        df.set(p1).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                Log.d(TAG, "Document has been saved!");
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.w(TAG, "Document is not saved");
-            }
-        });
-
-
+//        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//        DocumentReference df = db.document("/Patients/someid");
+//
+//        Map<Object, Object> p1 = new HashMap<Object, Object>();
+//        p1.put(FULLNAME_KEY, "Pasa Aslan");
+//        p1.put(USERNAME_KEY, "pssln");
+//        p1.put(GENDER_KEY, "MALE");
+//        p1.put(APPOINTMENTS_KEY, new ArrayList().toArray());
+//        df.set(p1).addOnSuccessListener(new OnSuccessListener<Void>() {
+//            @Override
+//            public void onSuccess(Void unused) {
+//                Log.d(TAG, "Document has been saved!");
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                Log.w(TAG, "Document is not saved");
+//            }
+//        });
 
 //        // Write a message to the database
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
 //        DatabaseReference ref = database.getReference();
 //
+//        Timestamp date = new Timestamp();
+//
 //        Patient p5 = new Patient("asadasd", "lolol", "CuteRabbit38", "male");
 //        Doctor d1 = new Doctor("first doctor", "frstdctr", "GoofyDoggie96", "male", "immunology");
+//
+//      FirebaseDatabase database = FirebaseDatabase.getInstance();
+//      String key = database.getReference("Appointment").push().getKey();
+//        ref.child("Patients").child(key).setValue(p5);
+//
+//
+//
 //
 ////        ref.child("Patients").child("p5").setValue(p5);
 ////        ref.child("Doctors").child("d1").setValue(d1);

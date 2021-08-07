@@ -1,7 +1,6 @@
 package com.example.cscb07project_patientappointmentapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 

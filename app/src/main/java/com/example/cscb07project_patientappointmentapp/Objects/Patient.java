@@ -2,9 +2,8 @@ package com.example.cscb07project_patientappointmentapp.Objects;
 
 import com.example.cscb07project_patientappointmentapp.Adapters.DoctorIDtoDoctorAdapter;
 
-import java.sql.Timestamp;
+import com.google.firebase.Timestamp;
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,14 +17,14 @@ public class Patient extends Person {
         int n = p.appointments.size();
 
         // Base Case
-        if (p.appointments == null || p.appointments.size() == 0 || appointment.startTime.after(p.appointments.get(n-1).startTime)){
+        if (p.appointments == null || p.appointments.size() == 0 || (appointment.startTime.compareTo(p.appointments.get(n-1).startTime) < 0)){
             p.appointments.add(appointment);
         }
 
         // Induction Step
         else {
             for (int i = 0; i < p.appointments.size(); i++) {
-                if (p.appointments.get(i).startTime.after(appointment.startTime)){
+                if (p.appointments.get(i).startTime.compareTo(appointment.startTime) > 0){
                     p.appointments.add(i, appointment);
                     break;
                 }
@@ -33,9 +32,9 @@ public class Patient extends Person {
         }
     }
 
-    public void bookAppointment(Timestamp apppointmentTime, String doctorID, String description) {
+    public void bookAppointment(Timestamp apppointmentTime, String doctorID, String description, String id) {
         Doctor doctor = DoctorIDtoDoctorAdapter.getDoctor(doctorID);
-        Appointment appointment = new Appointment(doctor,this, apppointmentTime, description);
+        Appointment appointment = new Appointment(doctor,this, apppointmentTime, description, id);
 
         addAppointmentToAppointments(appointment, doctor);
         addAppointmentToAppointments(appointment, this);
