@@ -32,6 +32,7 @@ public class SignUpDoctor extends AppCompatActivity {
         if (f == null){
             System.out.println("SIGNUP DOC: CURRENT USER IS NULL\n");
             return 0;
+
         }
         else{
             System.out.println("SIGNUP DOC: CURRENT USER NOT NULL ...... email adress: " + FirebaseAuth.getInstance().getCurrentUser().getEmail());
