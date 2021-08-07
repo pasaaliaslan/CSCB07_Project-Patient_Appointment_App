@@ -45,9 +45,6 @@ public class SignUpActivity extends AppCompatActivity {
         EditText editTextConfirmPassword = (EditText) findViewById(passConfirm);
         String passwordConfirm = editTextConfirmPassword.getText().toString();
 
-        EditText editTextDateOfBirth = (EditText) findViewById(dateOfB);
-        String birthday = editTextDateOfBirth.getText().toString();
-
         if (fullname.equals("")){
             editTextFullName.setError("Must enter fullname");
             return 1;
@@ -68,18 +65,59 @@ public class SignUpActivity extends AppCompatActivity {
             editTextConfirmPassword.setError("Passwords must match");
             return 1;
         }
+        if (verifyBirthdaySignUpPatient(dateOfB) == 1){
+            return 1;
+        }
+        return 0;
+    }
+
+    public int verifyBirthdaySignUpPatient(int dateOfB){
+
+        EditText editTextDateOfBirth = (EditText) findViewById(dateOfB);
+        String birthday = editTextDateOfBirth.getText().toString();
         if (birthday.equals("")){
             editTextDateOfBirth.setError("Must enter date of birth");
             return 1;
         }
 
         Pattern pattern = Pattern.compile("\\d{2}\\/\\d{2}\\/\\d{4}");
-		Matcher matcher = pattern.matcher(birthday);
-		if (!matcher.matches()){
-            editTextDateOfBirth.setError("Wrong format: Must be MM/DD/YYYY");
+        Matcher matcher = pattern.matcher(birthday);
+        if (!matcher.matches()){
+            editTextDateOfBirth.setError("Wrong format: Must be MM/DD/YYYY. For example Jul 7, 2007 is 07/07/2007");
             return 1;
         }
 
+        String[] arrStr = birthday.split("/");
+        int month = Integer.parseInt(arrStr[0]);
+        int day = Integer.parseInt(arrStr[1]);
+        int year = Integer.parseInt(arrStr[2]);
+
+        if (month < 1 || month > 12){
+            editTextDateOfBirth.setError("Valid months are 01, 02, .., 12");
+            return 1;
+        }
+        if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
+            if (day < 1 || day > 31){
+                editTextDateOfBirth.setError("Not a valid day");
+                return 1;
+            }
+        }
+        if (month == 4 || month == 6 || month == 9 || month == 11){
+            if (day < 1 || day > 30){
+                editTextDateOfBirth.setError("Not a valid day");
+                return 1;
+            }
+        }
+        if (month == 2){
+            if (day < 1 || day > 28){ // should we consider leap years
+                editTextDateOfBirth.setError("Not a valid day");
+                return 1;
+            }
+        }
+        if (year > 2021){
+            editTextDateOfBirth.setError("Not a valid year");
+            return 1;
+        }
         return 0;
     }
 
