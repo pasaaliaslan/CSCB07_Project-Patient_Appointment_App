@@ -67,16 +67,17 @@ public class MainActivity extends AppCompatActivity {
         Timestamp startDate = new Timestamp(123456789, 0);
         Timestamp endDate = new Timestamp(987654321, 0);
 
-        Patient p = new Patient("asadasd", "lolol", "CuteRabbit38", "male");
-        Doctor d = new Doctor("first doctor", "frstdctr", "GoofyDoggie96", "male", "immunology", startDate, endDate);
+//        Patient p = new Patient("asadasd", "lolol", "CuteRabbit38", "male");
+//        Doctor d = new Doctor("first doctor", "frstdctr", "GoofyDoggie96", "male", "immunology", startDate, endDate);
+//
+//        String key = database.getReference("Appointment").push().getKey();
+//
+//        Appointment a1 = new Appointment(d, p,startDate, "asdfghhj", key);
+//
+//        ref.child("Patients").child(key).setValue(a1);
 
-        String key = database.getReference("Appointment").push().getKey();
-
-        Appointment a1 = new Appointment(d, p,startDate, "asdfghhj", key);
-
-        ref.child("Patients").child(key).setValue(a1);
-
-
+        System.out.println(startDate);
+        System.out.println(startDate);
 
     }
 }

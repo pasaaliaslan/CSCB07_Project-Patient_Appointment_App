@@ -27,8 +27,8 @@ public class Appointment{
         this.description = description;
         this.id = id;
     }
-//
+
 //    public String GetDate(){
-//        this.startTime.
+//        return(this.startTime.toDate())
 //    }
 }
