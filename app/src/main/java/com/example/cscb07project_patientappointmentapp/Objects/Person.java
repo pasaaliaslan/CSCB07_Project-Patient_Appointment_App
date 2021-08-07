@@ -12,14 +12,24 @@ public abstract class Person {
     String username;
     String password;
     Gender gender;
-    ArrayList<Appointment> appointments;
+    ArrayList<Appointment> upcomingAppointments;
+    ArrayList<Appointment> pastAppointments;
 
     public Person(String fullName, String username, String password, String gender){
         this.fullName = fullName;
         this.username = username;
         this.password = password;
         this.gender = Gender.valueOf(gender.toUpperCase());
-        this.appointments = new ArrayList<Appointment>();
+        this.upcomingAppointments = new ArrayList<Appointment>();
+        this.pastAppointments = new ArrayList<Appointment>();
+    }
+
+    public ArrayList<Appointment> getAppointments() {
+        return upcomingAppointments;
+    }
+
+    public void setAppointments(ArrayList<Appointment> appointments) {
+        this.upcomingAppointments = appointments;
     }
 
     public String getFullName() {

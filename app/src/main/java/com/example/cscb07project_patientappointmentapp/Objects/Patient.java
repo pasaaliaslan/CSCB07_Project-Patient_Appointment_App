@@ -2,29 +2,33 @@ package com.example.cscb07project_patientappointmentapp.Objects;
 
 import com.example.cscb07project_patientappointmentapp.Adapters.DoctorIDtoDoctorAdapter;
 import com.google.firebase.Timestamp;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Patient extends Person {
 
-    public Patient(String fullName, String username, String password, String gender) {
+    String DOB;
+
+    public Patient(String fullName, String username, String password, String gender, String DOB) {
         super(fullName, username, password, gender);
+        this.DOB = DOB;
     }
 
     private void addAppointmentToAppointments (Appointment appointment, Person p) {
-        int n = p.appointments.size();
+        int n = p.upcomingAppointments.size();
 
         // Base Case
-        if (p.appointments == null || p.appointments.size() == 0 || (appointment.startTime.compareTo(p.appointments.get(n-1).startTime) < 0)){
-            p.appointments.add(appointment);
+        if (p.upcomingAppointments == null || p.upcomingAppointments.size() == 0 || (appointment.startTime.compareTo(p.upcomingAppointments.get(n-1).startTime) < 0)){
+            p.upcomingAppointments.add(appointment);
         }
 
         // Induction Step
         else {
-            for (int i = 0; i < p.appointments.size(); i++) {
-                if (p.appointments.get(i).startTime.compareTo(appointment.startTime) > 0){
-                    p.appointments.add(i, appointment);
+            for (int i = 0; i < p.upcomingAppointments.size(); i++) {
+                if (p.upcomingAppointments.get(i).startTime.compareTo(appointment.startTime) > 0){
+                    p.upcomingAppointments.add(i, appointment);
                     break;
                 }
             }
@@ -37,7 +41,7 @@ public class Patient extends Person {
 //
 //        addAppointmentToAppointments(appointment, doctor);
 //        addAppointmentToAppointments(appointment, this);
-//
+//        doctor.patients.add(this);
 //    }
 
     public Map<Doctor, ArrayList<Timestamp>> displayAvailabilityOfDoctors(ArrayList<Doctor> doctors) {
@@ -49,7 +53,7 @@ public class Patient extends Person {
 
         for (Doctor d : doctors){
             ArrayList<Timestamp> busy = new ArrayList<Timestamp>();
-            for (Appointment t : d.appointments){
+            for (Appointment t : d.upcomingAppointments){
                 busy.add(t.startTime);
             }
 
