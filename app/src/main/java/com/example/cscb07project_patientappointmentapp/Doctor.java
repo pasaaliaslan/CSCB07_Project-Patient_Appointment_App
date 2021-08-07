@@ -32,4 +32,8 @@ public class Doctor extends Person{
         this.specialty = Specialty.valueOf(specialty.toUpperCase());
     }
 
+
+    public Specialty getSpecialty() { return specialty; }
+
+    public void setSpecialty(Specialty specialty) { this.specialty = specialty; }
 }

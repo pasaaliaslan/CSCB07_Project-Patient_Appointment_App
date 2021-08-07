@@ -19,6 +19,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class SignUpDoctor extends AppCompatActivity {
 
     @Override
@@ -111,7 +115,21 @@ public class SignUpDoctor extends AppCompatActivity {
                 if (task.isSuccessful()){
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                     Doctor p1 = new Doctor(fullname, username, password, gender, specialization);
+
+//                    p1.docs = new ArrayList<Doctor>();
+//                    Doctor d1 = new Doctor("Stefan", "alina.buzila@mail.utoronto.ca", "stefan1", "MALE", "IMMUNOLOGY");
+//                    p1.docs.add(d1);
+
+
                     ref.child("Doctors").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(p1);
+
+//                    DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("Doctors/Wzhu5WtsOgMKe4j9WYdWhmljR7S2/");
+//                    HashMap<String,Object> map = new HashMap<String,Object>();//Creating HashMap
+//                    map.put("fullName","SamWinchester");  //Put elements in Map
+//                    map.put("isInSupernatural","yesforsure");
+//                    ref2.updateChildren(map);
+
+
 
                     startActivity(intent);
 
