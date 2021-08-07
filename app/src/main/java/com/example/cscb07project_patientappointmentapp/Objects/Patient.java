@@ -32,14 +32,14 @@ public class Patient extends Person {
         }
     }
 
-    public void bookAppointment(Timestamp apppointmentTime, String doctorID, String description, String id) {
-        Doctor doctor = DoctorIDtoDoctorAdapter.getDoctor(doctorID);
-        Appointment appointment = new Appointment(doctor,this, apppointmentTime, description, id);
-
-        addAppointmentToAppointments(appointment, doctor);
-        addAppointmentToAppointments(appointment, this);
-
-    }
+//    public void bookAppointment(Timestamp apppointmentTime, String doctorID, String description, String id) {
+//        Doctor doctor = DoctorIDtoDoctorAdapter.getDoctor(doctorID);
+//        Appointment appointment = new Appointment(doctor,this, apppointmentTime, description, id);
+//
+//        addAppointmentToAppointments(appointment, doctor);
+//        addAppointmentToAppointments(appointment, this);
+//
+//    }
 
     public Map<Doctor, ArrayList<Timestamp>> displayAvailabilityOfDoctors(ArrayList<Doctor> doctors) {
         /*

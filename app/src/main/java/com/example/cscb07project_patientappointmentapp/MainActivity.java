@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.cscb07project_patientappointmentapp.Objects.Appointment;
 import com.example.cscb07project_patientappointmentapp.Objects.Doctor;
 import com.example.cscb07project_patientappointmentapp.Objects.Patient;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -20,6 +21,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -58,26 +60,22 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-//        // Write a message to the database
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference ref = database.getReference();
-//
-//        Timestamp date = new Timestamp();
-//
-//        Patient p5 = new Patient("asadasd", "lolol", "CuteRabbit38", "male");
-//        Doctor d1 = new Doctor("first doctor", "frstdctr", "GoofyDoggie96", "male", "immunology");
-//
-//      FirebaseDatabase database = FirebaseDatabase.getInstance();
-//      String key = database.getReference("Appointment").push().getKey();
-//        ref.child("Patients").child(key).setValue(p5);
-//
-//
-//
-//
-////        ref.child("Patients").child("p5").setValue(p5);
-////        ref.child("Doctors").child("d1").setValue(d1);
-//        d1.createAppointments(3, 5);
-//        System.out.println(d1.fullName);
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference();
+
+        Timestamp startDate = new Timestamp(123456789, 0);
+        Timestamp endDate = new Timestamp(987654321, 0);
+
+        Patient p = new Patient("asadasd", "lolol", "CuteRabbit38", "male");
+        Doctor d = new Doctor("first doctor", "frstdctr", "GoofyDoggie96", "male", "immunology", startDate, endDate);
+
+        String key = database.getReference("Appointment").push().getKey();
+
+        Appointment a1 = new Appointment(d, p,startDate, "asdfghhj", key);
+
+        ref.child("Patients").child(key).setValue(a1);
+
 
     }
 }
