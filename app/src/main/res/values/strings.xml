@@ -96,4 +96,5 @@
     <string name="LoggedInAs"> Logged in as: </string>
     <string name="GenderString"> Gender: </string>
     <string name="SpecializationString"> Specialization: </string>
+    <string name="Birthday"> Date Of Birth </string>
 </resources>

@@ -18,6 +18,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class SignUpActivity extends AppCompatActivity {
 
     @Override
@@ -26,7 +29,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
     }
 
-    public int verifySignUpInfoPatient(int fulln, int usern, int pass, int passConfirm){
+    public int verifySignUpInfoPatient(int fulln, int usern, int pass, int passConfirm, int dateOfB){
 
         EditText editTextFullName = (EditText) findViewById(fulln);
         String fullname = editTextFullName.getText().toString();
@@ -41,6 +44,9 @@ public class SignUpActivity extends AppCompatActivity {
 
         EditText editTextConfirmPassword = (EditText) findViewById(passConfirm);
         String passwordConfirm = editTextConfirmPassword.getText().toString();
+
+        EditText editTextDateOfBirth = (EditText) findViewById(dateOfB);
+        String birthday = editTextDateOfBirth.getText().toString();
 
         if (fullname.equals("")){
             editTextFullName.setError("Must enter fullname");
@@ -62,6 +68,18 @@ public class SignUpActivity extends AppCompatActivity {
             editTextConfirmPassword.setError("Passwords must match");
             return 1;
         }
+        if (birthday.equals("")){
+            editTextDateOfBirth.setError("Must enter date of birth");
+            return 1;
+        }
+
+        Pattern pattern = Pattern.compile("\\d{2}\\/\\d{2}\\/\\d{4}");
+		Matcher matcher = pattern.matcher(birthday);
+		if (!matcher.matches()){
+            editTextDateOfBirth.setError("Wrong format: Must be MM/DD/YYYY");
+            return 1;
+        }
+
         return 0;
     }
 
@@ -69,7 +87,7 @@ public class SignUpActivity extends AppCompatActivity {
     public void CreatePatientAccount(View view) {
         Intent intent = new Intent(this, PatientNextAppointments.class);
 
-        int success = verifySignUpInfoPatient(R.id.SignUpFullName, R.id.SignUpUsername, R.id.SignUpPassword, R.id.SignUpPasswordConfirm);
+        int success = verifySignUpInfoPatient(R.id.SignUpFullName, R.id.SignUpUsername, R.id.SignUpPassword, R.id.SignUpPasswordConfirm, R.id.DateOfBirthPatientSignUp);
         if (success == 1){
             return;
         }
@@ -79,6 +97,9 @@ public class SignUpActivity extends AppCompatActivity {
         String username = editTextUsername.getText().toString();
         EditText editTextPassword = (EditText) findViewById(R.id.SignUpPassword);
         String password = editTextPassword.getText().toString();
+
+        EditText editTextDateOfBirth = (EditText) findViewById(R.id.DateOfBirthPatientSignUp);
+        String birthday = editTextDateOfBirth.getText().toString();
 
         Spinner spinner = (Spinner) findViewById(R.id.GenderSpinner);
         String gender = String.valueOf(spinner.getSelectedItem());
@@ -104,11 +125,10 @@ public class SignUpActivity extends AppCompatActivity {
                     //create patient object, add to firebase
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
 
-                    Patient p2 = new Patient(fullname, username, password, gender);
+                    Patient p2 = new Patient(fullname, username, password, gender, birthday);
                     ref.child("Patients").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(p2);
 
                     startActivity(intent);
-
                 }
                 else{
                     System.out.println("Error creating new user -by alina\n");
@@ -116,16 +136,6 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
         });
-//        FirebaseUser fer = FirebaseAuth.getInstance().getCurrentUser();
-//        if (fer == null){
-//            System.out.println("after creating user: curr user is null\n");
-//        }
-//        else{
-//            System.out.println("after creating user: curr user is not null\n");
-//        }
         //@org.jetbrains.annotations.NotNull
-
-//        intent.putExtra(EXTRA_MESSAGE, message);
-//        startActivity(intent);
     }
 }

@@ -14,15 +14,12 @@ public abstract class Person {
     String username;
     String password;
     Gender gender;
-//    ArrayList<Doctor> docs;
 
     public Person(String fullName, String username, String password, String gender){
         this.fullName = fullName;
         this.username = username;
         this.password = password;
         this.gender = Gender.valueOf(gender.toUpperCase());
-
-//        this.docs = new ArrayList<Doctor>();
     }
 
     public String getFullName() {
@@ -53,7 +50,4 @@ public abstract class Person {
         this.gender = gender;
     }
 
-//    public ArrayList<Doctor> getDocs() { return docs; }
-//
-//    public void setDocs(ArrayList<Doctor> docs) { this.docs = docs; }
 }

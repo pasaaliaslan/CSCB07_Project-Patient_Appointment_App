@@ -103,7 +103,6 @@ public class SignUpDoctor extends AppCompatActivity {
         String specialization = String.valueOf(specializationSpinner.getSelectedItem());
 
 
-
         SignupDocCheckIfCurrUserNull();
 
         System.out.println("want to create uder : username: " + username + ", password: " + password + "\n");
@@ -115,21 +114,17 @@ public class SignUpDoctor extends AppCompatActivity {
                 if (task.isSuccessful()){
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                     Doctor p1 = new Doctor(fullname, username, password, gender, specialization);
+                    ref.child("Doctors").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(p1);
 
 //                    p1.docs = new ArrayList<Doctor>();
 //                    Doctor d1 = new Doctor("Stefan", "alina.buzila@mail.utoronto.ca", "stefan1", "MALE", "IMMUNOLOGY");
 //                    p1.docs.add(d1);
-
-
-                    ref.child("Doctors").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(p1);
 
 //                    DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("Doctors/Wzhu5WtsOgMKe4j9WYdWhmljR7S2/");
 //                    HashMap<String,Object> map = new HashMap<String,Object>();//Creating HashMap
 //                    map.put("fullName","SamWinchester");  //Put elements in Map
 //                    map.put("isInSupernatural","yesforsure");
 //                    ref2.updateChildren(map);
-
-
 
                     startActivity(intent);
 
@@ -140,24 +135,6 @@ public class SignUpDoctor extends AppCompatActivity {
                     Toast.makeText(SignUpDoctor.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                if (e instanceof FirebaseAuthInvalidCredentialsException) {
-//                    notifyUser("Invalid password");
-//                } else if (e instanceof FirebaseAuthInvalidUserException) {
-//
-//                    String errorCode =
-//                            ((FirebaseAuthInvalidUserException) e).getErrorCode();
-//
-//                    if (errorCode.equals("ERROR_USER_NOT_FOUND")) {
-//                        notifyUser("No matching account found");
-//                    } else if (errorCode.equals("ERROR_USER_DISABLED")) {
-//                        notifyUser("User account has been disabled");
-//                    } else {
-//                        notifyUser(e.getLocalizedMessage());
-//                    }
-//                }
-//            }
         });
 //        System.out.println("EMAIL: " + FirebaseAuth.getInstance().getCurrentUser().getEmail() + ", SPECIALIZATION: " + specialization + "\n");
         //@org.jetbrains.annotations.NotNull
