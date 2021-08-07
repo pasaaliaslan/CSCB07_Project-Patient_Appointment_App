@@ -1,6 +1,5 @@
 package com.example.cscb07project_patientappointmentapp.Objects;
 
-import com.google.protobuf.TimestampProto;
 
 import com.google.firebase.Timestamp;
 import java.util.ArrayList;

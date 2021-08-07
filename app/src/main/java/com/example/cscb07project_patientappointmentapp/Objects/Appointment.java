@@ -1,6 +1,16 @@
 package com.example.cscb07project_patientappointmentapp.Objects;
 
+
 import com.google.firebase.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Objects;
+
+import com.example.cscb07project_patientappointmentapp.Objects.Doctor;
+import com.example.cscb07project_patientappointmentapp.Objects.Patient;
 
 public class Appointment{
 
@@ -17,4 +27,8 @@ public class Appointment{
         this.description = description;
         this.id = id;
     }
+//
+//    public String GetDate(){
+//        this.startTime.
+//    }
 }

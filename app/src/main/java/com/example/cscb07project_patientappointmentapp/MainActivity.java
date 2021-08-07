@@ -77,5 +77,6 @@ public class MainActivity extends AppCompatActivity {
         ref.child("Patients").child(key).setValue(a1);
 
 
+
     }
 }
