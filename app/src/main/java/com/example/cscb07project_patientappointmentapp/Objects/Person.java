@@ -11,14 +11,16 @@ public abstract class Person {
     String fullName;
     String username;
     String password;
+    String UID;
     Gender gender;
     ArrayList<Appointment> upcomingAppointments;
     ArrayList<Appointment> pastAppointments;
 
-    public Person(String fullName, String username, String password, String gender){
+    public Person(String fullName, String username, String password, String gender, String UID){
         this.fullName = fullName;
         this.username = username;
         this.password = password;
+        this.UID = UID;
         this.gender = Gender.valueOf(gender.toUpperCase());
         this.upcomingAppointments = new ArrayList<Appointment>();
         this.pastAppointments = new ArrayList<Appointment>();
@@ -28,9 +30,7 @@ public abstract class Person {
         return upcomingAppointments;
     }
 
-    public void setAppointments(ArrayList<Appointment> appointments) {
-        this.upcomingAppointments = appointments;
-    }
+    public void setAppointments(ArrayList<Appointment> appointments) { this.upcomingAppointments = appointments; }
 
     public String getFullName() {
         return fullName;

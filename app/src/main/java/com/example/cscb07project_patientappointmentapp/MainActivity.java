@@ -20,18 +20,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.time.LocalDateTime;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -68,30 +61,21 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         // Write a message to the database
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference ref = database.getReference();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference();
 
-        Timestamp startDate = new Timestamp(1216556789, 0);
-//        Timestamp endDate = new Timestamp(987654321, 0);
+        Timestamp startDate = new Timestamp(123456789, 0);
+        Timestamp endDate = new Timestamp(987654321, 0);
 
-//        Patient p = new Patient("asadasd", "lolol", "CuteRabbit38", "male");
-//        Doctor d = new Doctor("first doctor", "frstdctr", "GoofyDoggie96", "male", "immunology", startDate, endDate);
-//
-//        String key = database.getReference("Appointment").push().getKey();
-//
-//        Appointment a1 = new Appointment(d, p,startDate, "asdfghhj", key);
-//
-//        ref.child("Patients").child(key).setValue(a1);
-        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        System.out.println((startDate.toDate()));
-        String hold  = startDate.toDate().toString();
-        System.out.println(hold);
-        List<String> split = Arrays.asList(hold.split("\\s+"));
-        System.out.println(split);
-        String date = split.get(0) + ", " + split.get(1) + " " + split.get(2) + ", " +split.get(5);
-        String time = split.get(3);
-        System.out.println("The date is: " + date);
-        System.out.println("The time is: " + time);
+        Patient p = new Patient("asadasd", "lolol", "CuteRabbit38", "male");
+        Doctor d = new Doctor("first doctor", "frstdctr", "GoofyDoggie96", "male", "immunology", startDate, endDate);
+
+        String key = database.getReference("Appointment").push().getKey();
+
+        Appointment a1 = new Appointment(d, p,startDate, "asdfghhj", key);
+
+        ref.child("Patients").child(key).setValue(a1);
+
 
     }
 }
