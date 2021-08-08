@@ -62,21 +62,21 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         // Write a message to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference();
-
-        Timestamp startDate = new Timestamp(123456789, 0);
-        Timestamp endDate = new Timestamp(987654321, 0);
-
-        UID doctorUID = UID.createUID(database, "doctors");
-        UID patientUID = UID.createUID(database, "patients");
-
-        Patient p = new Patient("asadasd", "lolol", "CuteRabbit38", "male", "2021-08-08", patientUID);
-        Doctor d = new Doctor("first doctor", "frstdctr", "GoofyDoggie96", "male", "immunology", startDate, endDate, doctorUID);
-
-        UID appointmentUID = UID.createUID(database, "appointment");
-
-        Appointment a1 = new Appointment(d, p,startDate, "asdfghhj", appointmentUID);
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference ref = database.getReference();
+//
+//        Timestamp startDate = new Timestamp(123456789, 0);
+//        Timestamp endDate = new Timestamp(987654321, 0);
+//
+//        UID doctorUID = UID.createUID(database, "doctors");
+//        UID patientUID = UID.createUID(database, "patients");
+//
+//        Patient p = new Patient("asadasd", "lolol", "CuteRabbit38", "male", "2021-08-08", patientUID);
+//        Doctor d = new Doctor("first doctor", "frstdctr", "GoofyDoggie96", "male", "immunology", startDate, endDate, doctorUID);
+//
+//        UID appointmentUID = UID.createUID(database, "appointment");
+//
+//        Appointment a1 = new Appointment(d, p,startDate, "asdfghhj", appointmentUID);
 
 
     }

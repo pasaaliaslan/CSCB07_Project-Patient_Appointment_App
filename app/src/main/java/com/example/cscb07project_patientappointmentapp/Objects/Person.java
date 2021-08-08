@@ -11,30 +11,19 @@ public abstract class Person {
     String fullName;
     String username;
     String password;
-    UID uid;
     Gender gender;
-    ArrayList<UID> upcomingAppointments;
-    ArrayList<UID> pastAppointments;
+    ArrayList<Appointment> upcomingAppointments;
+    ArrayList<Appointment> pastAppointments;
 
-    public Person(String fullName, String username, String password, String gender, UID uid){
+    public Person(String fullName, String username, String password, String gender){
         this.fullName = fullName;
         this.username = username;
         this.password = password;
-        this.uid = uid;
         this.gender = Gender.valueOf(gender.toUpperCase());
-        this.upcomingAppointments = new ArrayList<UID>();
-        this.pastAppointments = new ArrayList<UID>();
+        this.upcomingAppointments = new ArrayList<Appointment>();
+        this.pastAppointments = new ArrayList<Appointment>();
     }
 
-    public UID getUID() { return uid; }
-
-    public void setUID(UID uid) { this.uid = uid;}
-
-    public ArrayList<UID> getAppointments() {
-        return upcomingAppointments;
-    }
-
-    public void setAppointments(ArrayList<UID> appointments) { this.upcomingAppointments = appointments; }
 
     public String getFullName() {
         return fullName;

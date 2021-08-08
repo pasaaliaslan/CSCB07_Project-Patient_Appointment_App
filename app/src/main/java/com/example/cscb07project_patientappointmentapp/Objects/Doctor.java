@@ -33,18 +33,18 @@ public class Doctor extends Person {
     Specialty specialty;
     Timestamp startDuty;
     Timestamp endDuty;
-    HashSet<UID> patients;
+    HashSet<Appointment> patients;
 
-    public Doctor(String fullName, String username, String password, String gender, String specialty, Timestamp startDuty, Timestamp endDuty, UID uid) {
-        super(fullName, username, password, gender, uid);
+    public Doctor(String fullName, String username, String password, String gender, String specialty, Timestamp startDuty, Timestamp endDuty) {
+        super(fullName, username, password, gender);
         this.specialty = Specialty.valueOf(specialty.toUpperCase());
         this.startDuty = startDuty;
         this.endDuty = endDuty;
-        this.patients = new HashSet<UID>();
+        this.patients = new HashSet<Appointment>();
     }
 
-    public ArrayList<UID> seeNextAppointment(){
-        ArrayList<UID> nextAppointments = new ArrayList<UID>();
+    public ArrayList<Appointment> seeNextAppointment(){
+        ArrayList<Appointment> nextAppointments = new ArrayList<Appointment>();
 
         for (int i = 0; i < 5 || i < upcomingAppointments.size(); i++){
             nextAppointments.add(upcomingAppointments.get(i));
