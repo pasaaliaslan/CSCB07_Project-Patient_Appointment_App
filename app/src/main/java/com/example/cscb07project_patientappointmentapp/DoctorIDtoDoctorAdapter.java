@@ -1,6 +1,6 @@
-package com.example.cscb07project_patientappointmentapp.Adapters;
+package com.example.cscb07project_patientappointmentapp;
 
-import com.example.cscb07project_patientappointmentapp.Objects.*;
+//import com.example.cscb07project_patientappointmentapp.Objects.*;
 
 import com.google.firebase.Timestamp;
 

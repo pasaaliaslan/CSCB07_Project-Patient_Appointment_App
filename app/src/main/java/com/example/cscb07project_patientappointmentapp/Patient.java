@@ -1,11 +1,4 @@
-package com.example.cscb07project_patientappointmentapp.Objects;
-
-import com.example.cscb07project_patientappointmentapp.Adapters.DoctorIDtoDoctorAdapter;
-import com.google.firebase.Timestamp;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+package com.example.cscb07project_patientappointmentapp;
 
 public class Patient extends Person {
 

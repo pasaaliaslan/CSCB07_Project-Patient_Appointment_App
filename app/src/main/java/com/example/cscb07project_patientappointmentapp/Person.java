@@ -1,4 +1,6 @@
-package com.example.cscb07project_patientappointmentapp.Objects;
+package com.example.cscb07project_patientappointmentapp;
+
+import com.example.cscb07project_patientappointmentapp.UID;
 
 import java.util.ArrayList;
 

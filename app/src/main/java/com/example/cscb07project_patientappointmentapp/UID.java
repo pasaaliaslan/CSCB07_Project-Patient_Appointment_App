@@ -1,4 +1,4 @@
-package com.example.cscb07project_patientappointmentapp.Objects;
+package com.example.cscb07project_patientappointmentapp;
 
 import com.google.firebase.database.FirebaseDatabase;
 

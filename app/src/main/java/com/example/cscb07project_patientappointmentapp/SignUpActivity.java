@@ -162,8 +162,10 @@ public class SignUpActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
                     //create patient object, add to firebase
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-
-                    Patient p2 = new Patient(fullname, username, password, gender, birthday);
+                    //new
+                    UID pat_uid = new UID(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    //done
+                    Patient p2 = new Patient(fullname, username, password, gender, birthday, pat_uid);
                     ref.child("Patients").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(p2);
 
                     startActivity(intent);
