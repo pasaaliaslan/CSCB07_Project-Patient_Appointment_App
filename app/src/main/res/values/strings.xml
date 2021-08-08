@@ -65,7 +65,6 @@
     </string-array>
 
     <string-array name="Gender">
-        <item>Gender</item>
         <item>Male</item>
         <item>Female</item>
     </string-array>
