@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateUIPatient(){
-        Intent intent = new Intent(this, PatientNextAppointments.class);
+        Intent intent = new Intent(this, PatientHomePage.class);
         startActivity(intent);
     }
 

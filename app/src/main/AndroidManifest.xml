@@ -16,8 +16,13 @@
         <activity
             android:name=".SignUpActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".BookAppointmentActivity" />
-        <activity android:name=".PatientNextAppointments" />
+
+        <activity android:name=".BookAppointmentActivity"
+            android:parentActivityName=".PatientHomePage"/>
+
+        <activity android:name=".PatientNextAppointments"
+            android:parentActivityName=".PatientHomePage"/>
+
         <activity
             android:name=".DoctorMain"
             android:exported="true" />

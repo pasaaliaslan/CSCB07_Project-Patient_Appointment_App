@@ -123,7 +123,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     /** Called when the user taps the CREATE ACCOUNT button */
     public void CreatePatientAccount(View view) {
-        Intent intent = new Intent(this, PatientNextAppointments.class);
+        Intent intent = new Intent(this, PatientHomePage.class);
 
         int success = verifySignUpInfoPatient(R.id.SignUpFullName, R.id.SignUpUsername, R.id.SignUpPassword, R.id.SignUpPasswordConfirm, R.id.DateOfBirthPatientSignUp);
         if (success == 1){
@@ -165,7 +165,10 @@ public class SignUpActivity extends AppCompatActivity {
                     //new
                     UID pat_uid = new UID(FirebaseAuth.getInstance().getCurrentUser().getUid());
                     //done
-                    Patient p2 = new Patient(fullname, username, password, gender, birthday, pat_uid);
+//                    Patient p2 = new Patient(fullname, username, password, gender, birthday, pat_uid);
+
+                    // alina changed to go with new constructor for testing purposes
+                    Patient p2 = new Patient(fullname, username, password, gender, birthday);
                     ref.child("Patients").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(p2);
 
                     startActivity(intent);

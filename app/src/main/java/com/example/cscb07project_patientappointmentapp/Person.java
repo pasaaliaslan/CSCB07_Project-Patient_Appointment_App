@@ -18,14 +18,25 @@ public abstract class Person {
     ArrayList<UID> upcomingAppointments;
     ArrayList<UID> pastAppointments;
 
-    public Person(String fullName, String username, String password, String gender, UID uid){
+//    public Person(String fullName, String username, String password, String gender, UID uid){
+//        this.fullName = fullName;
+//        this.username = username;
+//        this.password = password;
+//        this.uid = uid;
+//        this.gender = Gender.valueOf(gender.toUpperCase());
+//        this.upcomingAppointments = new ArrayList<UID>();
+//        this.pastAppointments = new ArrayList<UID>();
+//    }
+
+    // alina changed for testing puposes
+    public Person(){}
+    public Person(String fullName, String username, String password, String gender){
         this.fullName = fullName;
         this.username = username;
         this.password = password;
-        this.uid = uid;
         this.gender = Gender.valueOf(gender.toUpperCase());
-        this.upcomingAppointments = new ArrayList<UID>();
-        this.pastAppointments = new ArrayList<UID>();
+//        this.upcomingAppointments = new ArrayList<UID>();
+//        this.pastAppointments = new ArrayList<UID>();
     }
 
     public UID getUID() { return uid; }

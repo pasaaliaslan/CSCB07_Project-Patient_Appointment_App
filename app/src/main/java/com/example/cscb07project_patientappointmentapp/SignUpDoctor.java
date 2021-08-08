@@ -117,7 +117,11 @@ public class SignUpDoctor extends AppCompatActivity {
                     Timestamp t = new Timestamp(date1);
                     UID doc_uid = new UID(FirebaseAuth.getInstance().getCurrentUser().getUid());
                     //done
-                    Doctor p1 = new Doctor(fullname, username, password, gender, specialization, t, t, doc_uid);
+
+
+//                    Doctor p1 = new Doctor(fullname, username, password, gender, specialization, t, t, doc_uid);
+                    // alina changed to go with new constructor for testing purposes
+                    Doctor p1 = new Doctor(fullname, username, password, gender, specialization);
                     ref.child("Doctors").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(p1);
 
 

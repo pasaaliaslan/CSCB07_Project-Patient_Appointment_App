@@ -4,10 +4,18 @@ public class Patient extends Person {
 
     String DOB;
 
-    public Patient(String fullName, String username, String password, String gender, String DOB, UID uid) {
-        super(fullName, username, password, gender, uid);
+//    public Patient(String fullName, String username, String password, String gender, String DOB, UID uid) {
+//        super(fullName, username, password, gender, uid);
+//        this.DOB = DOB;
+//    }
+
+    // alina changed for testing purposes
+    public Patient(){ }
+    public Patient(String fullName, String username, String password, String gender, String DOB) {
+        super(fullName, username, password, gender);
         this.DOB = DOB;
     }
+    // done
 
 //    private void addAppointmentToAppointments (UID appointment, Person p) {
 //        int n = p.upcomingAppointments.size();
@@ -56,5 +64,8 @@ public class Patient extends Person {
 //        return busyTimestamps;
 //    }
 
+    public String getDOB() { return DOB; }
+
+    public void setDOB(String DOB) { this.DOB = DOB; }
 }
 
