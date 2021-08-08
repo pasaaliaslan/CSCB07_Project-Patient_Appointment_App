@@ -8,11 +8,12 @@
 
     <Button
         android:id="@+id/patientNextApptsSignOut"
-        android:layout_width="75dp"
-        android:layout_height="45dp"
+        android:layout_width="102dp"
+        android:layout_height="40dp"
         android:gravity="center"
         android:onClick="signOutFromPatientNextAppointments"
         android:text="@string/Signout"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.952"
@@ -22,13 +23,14 @@
 
     <TextView
         android:id="@+id/PatientNextAppointments"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_width="384dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="84dp"
         android:gravity="center"
         android:text="@string/Patient_next_appointments"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -95,4 +97,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NextAppointment4"
         app:layout_constraintVertical_bias="0.548" />
+
+    <TextView
+        android:id="@+id/PatientLoggedInNextAppts"
+        android:layout_width="258dp"
+        android:layout_height="18dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.045" />
+
+    <TextView
+        android:id="@+id/LoggedInAsPatientNextAppts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/LoggedInAs"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.027"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.009" />
 </androidx.constraintlayout.widget.ConstraintLayout>
