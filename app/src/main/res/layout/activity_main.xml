@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="center"
+        android:inputType="textPersonName"
         android:text="@string/Login"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,7 +27,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:importantForAutofill="no"
         android:gravity="center"
         android:hint="@string/Username"
         android:inputType="textPersonName"
@@ -40,7 +40,6 @@
     <EditText
         android:id="@+id/MainPassword"
         android:layout_width="wrap_content"
-        android:importantForAutofill="no"
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="center"
