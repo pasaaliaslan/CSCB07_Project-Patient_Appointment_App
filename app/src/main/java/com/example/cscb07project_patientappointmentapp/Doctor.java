@@ -1,6 +1,13 @@
 package com.example.cscb07project_patientappointmentapp;
 
-public class Doctor extends Person{
+
+
+import com.google.firebase.TimeStamp;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+
+public class Doctor extends Person {
 
     enum Specialty {
         IMMUNOLOGY,
@@ -26,14 +33,26 @@ public class Doctor extends Person{
     }
 
     Specialty specialty;
+    Timestamp startDuty;
+    Timestamp endDuty;
+    HashSet<UID> patients;
 
-    public Doctor(String fullName, String username, String password, String gender, String specialty) {
-        super(fullName, username, password, gender);
+    public Doctor(String fullName, String username, String password, String gender, String specialty, Timestamp startDuty, Timestamp endDuty, UID uid) {
+        super(fullName, username, password, gender, uid);
         this.specialty = Specialty.valueOf(specialty.toUpperCase());
+        this.startDuty = startDuty;
+        this.endDuty = endDuty;
+        this.patients = new HashSet<UID>();
     }
 
+    public ArrayList<UID> seeNextAppointment(){
+        ArrayList<UID> nextAppointments = new ArrayList<UID>();
 
-    public Specialty getSpecialty() { return specialty; }
+        for (int i = 0; i < 5 || i < upcomingAppointments.size(); i++){
+            nextAppointments.add(upcomingAppointments.get(i));
+        }
 
-    public void setSpecialty(Specialty specialty) { this.specialty = specialty; }
+        return nextAppointments;
+    }
+
 }
