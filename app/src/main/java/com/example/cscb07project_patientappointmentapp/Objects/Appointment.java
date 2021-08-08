@@ -19,14 +19,14 @@ public class Appointment{
     Patient patient;
     Timestamp startTime;
     String description;
-    String UID;
+    UID uid;
 
-    public Appointment(Doctor doctor, Patient patient, Timestamp startTime, String description, String UID){
+    public Appointment(Doctor doctor, Patient patient, Timestamp startTime, String description, UID uid){
         this.doctor = doctor;
         this.startTime = startTime;
         this.patient = patient;
         this.description = description;
-        this.UID = UID;
+        this.uid = uid;
     }
 
     public String getDate(){

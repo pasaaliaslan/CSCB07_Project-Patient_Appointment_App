@@ -9,6 +9,7 @@ import android.util.Log;
 import com.example.cscb07project_patientappointmentapp.Objects.Appointment;
 import com.example.cscb07project_patientappointmentapp.Objects.Doctor;
 import com.example.cscb07project_patientappointmentapp.Objects.Patient;
+import com.example.cscb07project_patientappointmentapp.Objects.UID;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
@@ -67,14 +68,15 @@ public class MainActivity extends AppCompatActivity {
         Timestamp startDate = new Timestamp(123456789, 0);
         Timestamp endDate = new Timestamp(987654321, 0);
 
-        Patient p = new Patient("asadasd", "lolol", "CuteRabbit38", "male");
-        Doctor d = new Doctor("first doctor", "frstdctr", "GoofyDoggie96", "male", "immunology", startDate, endDate);
+        UID doctorUID = UID.createUID(database, "doctors");
+        UID patientUID = UID.createUID(database, "patients");
 
-        String key = database.getReference("Appointment").push().getKey();
+        Patient p = new Patient("asadasd", "lolol", "CuteRabbit38", "male", "2021-08-08", patientUID);
+        Doctor d = new Doctor("first doctor", "frstdctr", "GoofyDoggie96", "male", "immunology", startDate, endDate, doctorUID);
 
-        Appointment a1 = new Appointment(d, p,startDate, "asdfghhj", key);
+        UID appointmentUID = UID.createUID(database, "appointment");
 
-        ref.child("Patients").child(key).setValue(a1);
+        Appointment a1 = new Appointment(d, p,startDate, "asdfghhj", appointmentUID);
 
 
     }
