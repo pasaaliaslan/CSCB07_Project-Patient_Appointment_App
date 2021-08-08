@@ -49,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Book Appointment"
+        android:text="@string/Book_appt"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
         android:layout_height="38dp"
         android:layout_marginTop="120dp"
         android:layout_marginBottom="20dp"
-        android:text="Appointment 1"
+        android:text="@string/Appointment1"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +72,7 @@
         android:layout_width="410dp"
         android:layout_height="37dp"
         android:layout_marginBottom="20dp"
-        android:text="Appointment 2"
+        android:text="@string/Appointment2"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +83,7 @@
         android:layout_width="413dp"
         android:layout_height="36dp"
         android:layout_marginBottom="20dp"
-        android:text="Appointment 3"
+        android:text="@string/Appointment3"
         app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,11 +94,26 @@
         android:layout_width="411dp"
         android:layout_height="35dp"
         android:layout_marginBottom="300dp"
-        android:text="Appointment 4"
+        android:text="@string/Appointment4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+    <Button
+        android:id="@+id/BookApptSignOutButton"
+        android:layout_width="84dp"
+        android:layout_height="41dp"
+        android:gravity="center"
+        android:onClick="signOutFromBookAppts"
+        android:text="@string/Signout"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.953"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.008" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
