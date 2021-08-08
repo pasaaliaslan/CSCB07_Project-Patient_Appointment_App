@@ -36,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        FirebaseApp.initializeApp(getApplicationContext());
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        FirebaseApp.initializeApp(getApplicationContext());
 
         if (LoginCheckIfCurrUserNull() == 1){
             // curr user != null
