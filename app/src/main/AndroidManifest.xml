@@ -10,19 +10,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CSCB07ProjectPatientAppointmentApp">
-        <activity android:name=".PatientHomePage"></activity>
-        <activity android:name=".SignUpDoctor"
-            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ListDoctorsActivity"></activity>
+        <activity android:name=".PatientHomePage" />
+        <activity
+            android:name=".SignUpDoctor"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".SignUpActivity"
             android:parentActivityName=".MainActivity" />
-
-        <activity android:name=".BookAppointmentActivity"
-            android:parentActivityName=".PatientHomePage"/>
-
-        <activity android:name=".PatientNextAppointments"
-            android:parentActivityName=".PatientHomePage"/>
-
+        <activity
+            android:name=".BookAppointmentActivity"
+            android:parentActivityName=".PatientHomePage" />
+        <activity
+            android:name=".PatientNextAppointments"
+            android:parentActivityName=".PatientHomePage" />
         <activity
             android:name=".DoctorMain"
             android:exported="true" />

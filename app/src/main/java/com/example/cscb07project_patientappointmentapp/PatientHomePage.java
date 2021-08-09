@@ -28,7 +28,7 @@ public class PatientHomePage extends AppCompatActivity {
 
 
     public void goToBookAppt(View view) {
-        Intent intent = new Intent(this, BookAppointmentActivity.class);
+        Intent intent = new Intent(this, ListDoctorsActivity.class); //BookAppointmentActivity.class
         startActivity(intent);
     }
 

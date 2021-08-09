@@ -39,6 +39,9 @@ public class BookAppointmentActivity extends AppCompatActivity //implements Adap
             System.out.println("IN BOOK APT CURRENT USER NOT NULL ...... email adress: " + FirebaseAuth.getInstance().getCurrentUser().getEmail());
         }
 
+//        Intent intent = new Intent(this, ListDoctorsActivity.class);
+//        startActivity(intent);
+
 //        //Getting the instance of Spinner and applying OnItemSelectedListener on it
 //        Spinner spin = (Spinner) findViewById(R.id.DoctorSpecialization);
 //        //spin.setOnItemSelectedListener(this);

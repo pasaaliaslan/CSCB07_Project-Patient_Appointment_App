@@ -99,6 +99,7 @@
     <string name="CreateAccountPatient"> Create Account as PATIENT </string>
     <string name="CreateAccountDoc"> Create Account as DOCTOR </string>
     <string name="FullName"> Full Name </string>
-
+    <string name="Docs"> Doctors </string>
+    <string name="Availabilities"> Availabilities </string>
 </resources>
 

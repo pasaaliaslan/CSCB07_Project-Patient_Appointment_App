@@ -44,6 +44,8 @@ public class Doctor extends Person {
 //    }
 
     // alina changed for testing purposes
+    public Doctor(){}
+
     public Doctor(String fullName, String username, String password, String gender, String specialty) {
         super(fullName, username, password, gender);
         this.specialty = Specialty.valueOf(specialty.toUpperCase());
@@ -62,4 +64,7 @@ public class Doctor extends Person {
         return nextAppointments;
     }
 
+    public Specialty getSpecialty() { return specialty; }
+
+    public void setSpecialty(Specialty specialty) { this.specialty = specialty; }
 }
