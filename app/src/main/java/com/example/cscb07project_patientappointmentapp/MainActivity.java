@@ -9,7 +9,6 @@ import android.util.Log;
 import com.example.cscb07project_patientappointmentapp.Objects.Appointment;
 import com.example.cscb07project_patientappointmentapp.Objects.Doctor;
 import com.example.cscb07project_patientappointmentapp.Objects.Patient;
-import com.example.cscb07project_patientappointmentapp.Objects.UID;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;

@@ -20,10 +20,32 @@ public abstract class Person {
         this.username = username;
         this.password = password;
         this.gender = Gender.valueOf(gender.toUpperCase());
-        this.upcomingAppointments = new ArrayList<Appointment>();
-        this.pastAppointments = new ArrayList<Appointment>();
+        this.upcomingAppointments = new ArrayList<>();
+        this.pastAppointments = new ArrayList<>();
     }
 
+    public void addAppointmentToAppointments (Appointment appointment, Person p) {
+        int n = p.upcomingAppointments.size();
+
+        // Base Case
+        if (p.upcomingAppointments == null || p.upcomingAppointments.size() == 0 || (appointment.startTime.compareTo(p.upcomingAppointments.get(n-1).startTime) < 0)){
+            p.upcomingAppointments.add(appointment);
+        }
+
+        // Induction Step
+        else {
+            for (int i = 0; i < p.upcomingAppointments.size(); i++) {
+                if (p.upcomingAppointments.get(i).startTime.compareTo(appointment.startTime) > 0){
+                    p.upcomingAppointments.add(i, appointment);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void updateAppointments {
+
+    };
 
     public String getFullName() {
         return fullName;
@@ -52,4 +74,12 @@ public abstract class Person {
     public void setGender(Gender gender) {
         this.gender = gender;
     }
+
+    public ArrayList<Appointment> getUpcomingAppointments() { return upcomingAppointments; }
+
+    public void setUpcomingAppointments(ArrayList<Appointment> upcomingAppointments) { this.upcomingAppointments = upcomingAppointments; }
+
+    public ArrayList<Appointment> getPastAppointments() { return pastAppointments; }
+
+    public void setPastAppointments(ArrayList<Appointment> pastAppointments) { this.pastAppointments = pastAppointments; }
 }

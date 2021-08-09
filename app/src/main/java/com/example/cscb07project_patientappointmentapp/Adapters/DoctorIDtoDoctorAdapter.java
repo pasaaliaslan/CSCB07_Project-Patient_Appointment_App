@@ -1,25 +1,16 @@
 package com.example.cscb07project_patientappointmentapp.Adapters;
 
-import android.widget.ArrayAdapter;
-
 import androidx.annotation.NonNull;
-
 import com.example.cscb07project_patientappointmentapp.Objects.*;
-
-import com.google.firebase.Timestamp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.CollectionReference;
-
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class DoctorIDtoDoctorAdapter {
-    // Create a function that returns doctor object corresponding to the doctor ID
     // no inner class i'm using an anonymous inner class
 
 
