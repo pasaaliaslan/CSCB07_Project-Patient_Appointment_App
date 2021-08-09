@@ -1,5 +1,7 @@
 package com.example.cscb07project_patientappointmentapp;
 
+import com.google.firebase.Timestamp;
+
 public class Patient extends Person {
 
     String DOB;
@@ -16,6 +18,18 @@ public class Patient extends Person {
         this.DOB = DOB;
     }
     // done
+
+
+    // No ID needed
+    public void bookAppointment(Timestamp startTime, String doctorName, String doctorSpecialty, String doctorGender, String description) {
+        Doctor doctor = DoctorIDtoDoctorAdapter.getDoctor(doctorName, doctorSpecialty, doctorGender);
+        //Need to check for time slots
+
+        Appointment appointment = new Appointment(doctor,this, startTime, description);
+        addAppointmentToAppointments(appointment, doctor);
+        addAppointmentToAppointments(appointment, this);
+        doctor.patients.add(this);
+    }
 
 //    private void addAppointmentToAppointments (UID appointment, Person p) {
 //        int n = p.upcomingAppointments.size();
@@ -68,4 +82,9 @@ public class Patient extends Person {
 
     public void setDOB(String DOB) { this.DOB = DOB; }
 }
+
+
+
+
+
 
