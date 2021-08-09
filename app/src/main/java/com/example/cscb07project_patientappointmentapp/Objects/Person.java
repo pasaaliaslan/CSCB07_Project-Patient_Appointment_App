@@ -45,8 +45,8 @@ public abstract class Person {
 
     public void setPassword(String password) { this.password = password; }
 
-    public Gender getGender() {
-        return gender;
+    public String getGender() {
+        return gender.toString().toUpperCase();
     }
 
     public void setGender(Gender gender) {

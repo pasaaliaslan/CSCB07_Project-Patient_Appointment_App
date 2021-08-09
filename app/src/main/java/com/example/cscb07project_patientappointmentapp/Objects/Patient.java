@@ -35,32 +35,32 @@ public class Patient extends Person {
         }
     }
 
-    public void bookAppointment(Timestamp startTime, String doctorID, String description, String id) {
-        Doctor doctor = DoctorIDtoDoctorAdapter.getDoctor(doctorID);
+    public void bookAppointment(Timestamp startTime, String doctorName, String doctorSpecialty, String doctorGender, String description, String id) {
+        Doctor doctor = DoctorIDtoDoctorAdapter.getDoctor(doctorName, doctorSpecialty, doctorGender);
         Appointment appointment = new Appointment(doctor,this, startTime, description);
         addAppointmentToAppointments(appointment, doctor);
         addAppointmentToAppointments(appointment, this);
         doctor.patients.add(this);
     }
 
-    public Map<Doctor, ArrayList<Timestamp>> displayAvailabilityOfDoctors(ArrayList<Doctor> doctors) {
-        /*
-        Returns a Map of timestamps when the doctors are busy.
-         */
-
-        Map<Doctor, ArrayList<Timestamp>> busyTimestamps = new HashMap<Doctor, ArrayList<Timestamp>>();
-
-        for (Doctor d : doctors){
-            ArrayList<Timestamp> busy = new ArrayList<Timestamp>();
-            for (UID t : d.upcomingAppointments){
-                busy.add(t.startTime);
-            }
-
-            busyTimestamps.put(d, busy);
-        }
-
-        return busyTimestamps;
-    }
+//    public Map<Doctor, ArrayList<Timestamp>> displayAvailabilityOfDoctors(ArrayList<Doctor> doctors) {
+//        /*
+//        Returns a Map of timestamps when the doctors are busy.
+//         */
+//
+//        Map<Doctor, ArrayList<Timestamp>> busyTimestamps = new HashMap<Doctor, ArrayList<Timestamp>>();
+//
+//        for (Doctor d : doctors){
+//            ArrayList<Timestamp> busy = new ArrayList<Timestamp>();
+//            for (UID t : d.upcomingAppointments){
+//                busy.add(t.startTime);
+//            }
+//
+//            busyTimestamps.put(d, busy);
+//        }
+//
+//        return busyTimestamps;
+//    }
 
 }
 

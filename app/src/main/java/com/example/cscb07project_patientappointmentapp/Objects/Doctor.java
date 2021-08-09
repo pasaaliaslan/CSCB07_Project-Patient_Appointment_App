@@ -52,5 +52,12 @@ public class Doctor extends Person {
 
         return nextAppointments;
     }
+    //Returns string so we can match input
+    public String getSpecialty() {
+        return specialty.toString().toUpperCase();
+    }
 
+    public void setSpecialty(Specialty specialty) {
+        this.specialty = specialty;
+    }
 }
