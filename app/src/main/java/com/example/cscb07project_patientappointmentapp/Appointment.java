@@ -14,7 +14,7 @@ public class Appointment{
     String description;
     UID uid;
 
-    public Appointment(Doctor doctor, Patient patient, Timestamp startTime, String description, UID uid){
+    public Appointment(Doctor doctor, Patient patient, Timestamp startTime, String description){
         this.doctor = doctor;
         this.startTime = startTime;
         this.patient = patient;
@@ -34,3 +34,5 @@ public class Appointment{
         return(splits.get(3));
     }
 }
+
+
