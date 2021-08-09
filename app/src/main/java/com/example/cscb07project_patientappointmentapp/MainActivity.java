@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
             checkIfDocOrPat();
         }
 
+        Patient p = new Patient("alianbuzila", "Alin", "password", "MALE", "12/12/2002");
+
         Intent intent = new Intent(this, ListDoctorsActivity.class);
         startActivity(intent);
 //        DoctorIDtoDoctorAdapter newd = new DoctorIDtoDoctorAdapter();

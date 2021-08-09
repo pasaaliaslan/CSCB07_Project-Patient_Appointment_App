@@ -34,6 +34,9 @@ public abstract class Person {
         this.username = username;
         this.password = password;
         this.gender = Gender.valueOf(gender.toUpperCase());
+
+//        System.out.println("MY GENDER: " + this.gender.toString());
+
         this.upcomingAppointments = new ArrayList<>();
         this.pastAppointments = new ArrayList<>();
     }

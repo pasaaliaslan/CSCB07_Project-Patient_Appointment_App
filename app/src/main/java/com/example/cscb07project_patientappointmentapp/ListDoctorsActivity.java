@@ -19,6 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firestore.v1.DocumentTransform;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListDoctorsActivity extends AppCompatActivity {
 
@@ -26,6 +27,7 @@ public class ListDoctorsActivity extends AppCompatActivity {
 //    TextView[] docTextViews;
 //    int j =0;
     ArrayList<Doctor> allDoctorsatClinic;
+    Doctor sas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,28 @@ public class ListDoctorsActivity extends AppCompatActivity {
         for (Doctor d : allDoctorsatClinic) {
             System.out.println("IN MAINER: " + d.getUsername() + d.getSpecialty());
         }
+//
+        if (sas == null){
+            System.out.println("sas is NULL");
+        }
+        else {
+            System.out.println("sas name: " + sas.getUsername());
+        }
+        System.out.println("IN MAINER: SIZE: " + allDoctorsatClinic.size());
+        System.out.println("IN MAINER: SIZE: " + allDoctorsatClinic.size());
+        System.out.println("IN MAINER: SIZE: " + allDoctorsatClinic.size());
+        System.out.println("IN MAINER: SIZE: " + allDoctorsatClinic.size());
+        System.out.println("IN MAINER: SIZE: " + allDoctorsatClinic.size());
+        System.out.println("IN MAINER: SIZE: " + allDoctorsatClinic.size());
+        System.out.println("IN MAINER: SIZE: " + allDoctorsatClinic.size());
+        System.out.println("IN MAINER: SIZE: " + allDoctorsatClinic.size());
+        System.out.println("IN MAINER: SIZE: " + allDoctorsatClinic.size());
+        System.out.println("IN MAINER: SIZE: " + allDoctorsatClinic.size());
+        System.out.println("IN MAINER: SIZE: " + allDoctorsatClinic.size());
+        System.out.println("IN MAINER: SIZE: " + allDoctorsatClinic.size());
+
+
+
     }
 
     public void gdl() {
@@ -50,37 +74,40 @@ public class ListDoctorsActivity extends AppCompatActivity {
         // we use final cause we are using an anonymous class and anonymous classes only take
         // final variables, we can still call methods on those variables tho. No problems there!
 //        final List<Doctor> theDoctors = new ArrayList<Doctor>();
-        final ArrayList<Doctor> theDoctors = new ArrayList<Doctor>();
+
+        final List<Doctor> theDoctors = new ArrayList<Doctor>();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference();
-        databaseReference.child("Doctors").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Doctors").addListenerForSingleValueEvent(new ValueEventListener() {
+
 
             // This method will be invoked any time the data on the database changes.
             // Additionally, it will be invoked as soon as we connect the listener, so that we
             // can get an initial snapshot of the data on the database.
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                // this is gonna give me collection of all the references under "Doctor"
-                // I am going to get all the children at the doctor level
+
                 Iterable<DataSnapshot> children = snapshot.getChildren();
-                // Now we have to "Shake hands" with all of them
-                // Each time we shake hands with the object we put it in child
                 for (DataSnapshot child : children) {
                     Doctor value = child.getValue(Doctor.class);
                     theDoctors.add(value);
                 }
 
-//                for (Doctor d : theDoctors) {
-//                    System.out.println("ONE DOC: " + d.getUsername() + d.getSpecialty());
-//
-//                }
-                updateFields(theDoctors);
+                for (Doctor d : theDoctors) {
+                    System.out.println("ONE DOC: " + d.getUsername() + d.getSpecialty());
+                }
+//                updateFields(theDoctors);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+
+        System.out.println("PLEASE BE HERE: " + theDoctors.size());
+        for (Doctor d : theDoctors) {
+            System.out.println("PLEASE BE HERE: " + d.getUsername() + d.getSpecialty());
+        }
     }
 
 
@@ -109,10 +136,29 @@ public class ListDoctorsActivity extends AppCompatActivity {
 
 
         for (Doctor doc: allDocs) {
-            allDoctorsatClinic.add((Doctor)doc.clone());
+            sas =  new Doctor(doc.getFullName(), doc.getUsername(), doc.getPassword(), doc.getGender().toString(), doc.getSpecialty().toString());
+            System.out.println("adding to copy: " );
+//            allDoctorsatClinic.add(toCopy);
+//            allDoctorsatClinic.add((Doctor)doc.clone());
+        }
+
+//        for (Doctor b: allDoctorsatClinic){
+//            System.out.println("ALLDOCS ALINA: " + b.getUsername() + b.getSpecialty());
+//        }
+        if (sas == null){
+            System.out.println("SASSER is NULL");
+        }
+        else {
+            System.out.println("sasser name: " + sas.getUsername());
         }
 
     }
+
+    ////_________________________________________________________________________________________________________________________________________________________________
+    //_________________________________________________________________________________________________________________________________________________________________
+    //_________________________________________________________________________________________________________________________________________________________________
+    //_________________________________________________________________________________________________________________________________________________________________
+
 
 //
 //    public void listAllDocsFirst(ArrayList<Doctor> allDocs) {
