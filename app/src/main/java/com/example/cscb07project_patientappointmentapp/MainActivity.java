@@ -46,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
             checkIfDocOrPat();
         }
 
+        Intent intent = new Intent(this, ListDoctorsActivity.class);
+        startActivity(intent);
+//        DoctorIDtoDoctorAdapter newd = new DoctorIDtoDoctorAdapter();
+//        newd.getAllDoctorsList();
+
 //        FirebaseFirestore db = FirebaseFirestore.getInstance();
 //        DocumentReference df = db.document("/Patients/someid");
 //        Map<Object, Object> p1 = new HashMap<Object, Object>();
