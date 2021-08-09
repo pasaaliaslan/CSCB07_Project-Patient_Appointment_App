@@ -3,12 +3,14 @@ package com.example.cscb07project_patientappointmentapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.example.cscb07project_patientappointmentapp.Objects.Appointment;
 import com.example.cscb07project_patientappointmentapp.Objects.Doctor;
 import com.example.cscb07project_patientappointmentapp.Objects.Patient;
+import com.example.cscb07project_patientappointmentapp.Objects.Timeslots;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String GENDER_KEY = "gender";
     public static final String APPOINTMENTS_KEY = "appointment";
 
+    @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -76,7 +80,22 @@ public class MainActivity extends AppCompatActivity {
 //        UID appointmentUID = UID.createUID(database, "appointment");
 //
 //        Appointment a1 = new Appointment(d, p,startDate, "asdfghhj", appointmentUID);
-
-
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+//        Calendar c = Calendar.getInstance();
+//        List<Calendar> hold = new ArrayList<Calendar>();
+//        for (int i = 0; i < 8; i++) {
+//        c.add(Calendar.DATE, 1);
+//        Calendar temp = (Calendar) c.clone();
+//        hold.add(temp);
+//        }
+//        System.out.println(hold);
+//        for (Calendar cal : hold){
+//            System.out.println(cal);
+//        }
+        System.out.println(Timeslots.createTimeslots().size());
+        for (Timeslots t : Timeslots.createTimeslots()){
+            System.out.println(t.getTimeslot());
+            System.out.println(t.getDateOfSlot().getTime());
+        }
     }
 }

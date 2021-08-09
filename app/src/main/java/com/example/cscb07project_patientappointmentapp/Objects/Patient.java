@@ -4,7 +4,9 @@ import com.example.cscb07project_patientappointmentapp.Adapters.DoctorIDtoDoctor
 import com.google.firebase.Timestamp;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Patient extends Person {
@@ -28,25 +30,8 @@ public class Patient extends Person {
         doctor.patients.add(this);
     }
 
-    public ArrayList<Timestamp> displayAvailabilityOfDoctors(Doctor doctor) {
-        /*
-        Query the data base and return all doctors that are free
-        Returns a Map of timestamps when the doctors are busy.
-         */
 
-        ArrayList<Timestamp> busyTimestamps = new ArrayList<Timestamp>;
-
-        for (Doctor d : doctors){
-            ArrayList<Timestamp> busyTimes = new ArrayList<Timestamp>();
-            for (Appointment t : d.upcomingAppointments){
-                busyTimes.add(t.startTime);
-            }
-
-            busyTimestamps.put(d, busyTimes);
-        }
-
-        return busyTimestamps;
     }
 
-}
+
 

@@ -43,9 +43,9 @@ public abstract class Person {
         }
     }
 
-    public void updateAppointments {
-
-    };
+//    public void updateAppointments {
+//
+//    };
 
     public String getFullName() {
         return fullName;
