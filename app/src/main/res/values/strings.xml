@@ -101,5 +101,6 @@
     <string name="FullName"> Full Name </string>
     <string name="Docs"> Doctors </string>
     <string name="Availabilities"> Availabilities </string>
+    <string name="Filter"> Filter </string>
 </resources>
 

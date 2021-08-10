@@ -10,8 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CSCB07ProjectPatientAppointmentApp">
-        <activity android:name=".FilterDocs"></activity>
-        <activity android:name=".ListDoctorsActivity" />
+<!--        <activity android:name=".DocListViewItems"></activity>-->
+        <activity android:name=".FilterDocs" />
+        <activity android:name=".ListDoctorsActivity"
+            android:parentActivityName=".PatientHomePage"/>
         <activity android:name=".PatientHomePage" />
         <activity
             android:name=".SignUpDoctor"

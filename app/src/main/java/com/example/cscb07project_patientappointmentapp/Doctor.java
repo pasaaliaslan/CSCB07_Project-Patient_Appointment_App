@@ -68,8 +68,8 @@ public class Doctor extends Person {
 
     public void setSpecialty(Specialty specialty) { this.specialty = specialty; }
 
-    @Override
-    protected Object clone(){}
+//    @Override
+//    protected Object clone(){}
 
 }
 

@@ -24,6 +24,7 @@ public class PatientHomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_home_page);
+
     }
 
 
@@ -36,6 +37,7 @@ public class PatientHomePage extends AppCompatActivity {
         Intent intent = new Intent(this, PatientNextAppointments.class);
         startActivity(intent);
     }
+
 
     public void signOutPatientHomePage(View view){
         FirebaseAuth.getInstance().signOut();
