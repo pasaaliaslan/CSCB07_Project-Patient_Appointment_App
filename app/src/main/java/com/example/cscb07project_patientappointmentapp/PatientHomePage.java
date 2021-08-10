@@ -64,6 +64,7 @@ public class PatientHomePage extends AppCompatActivity {
                 public void onDataChange(@NonNull  DataSnapshot snapshot) {
                     //@org.jetbrains.annotations.NotNull
                     Patient p = snapshot.getValue(Patient.class);
+                    assert p != null;
                     String name = p.fullName;
                     String dob = p.DOB;
                     textviewPatientName.setText(name);
