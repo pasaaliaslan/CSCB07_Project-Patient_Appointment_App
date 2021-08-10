@@ -51,7 +51,7 @@
 
     <!--</RelativeLayout>-->
     <ListView
-        android:id="@+id/idLVAllDoctors"
+        android:id="@+id/idLVFilteredDoctors"
         android:layout_width="408dp"
         android:layout_height="564dp"
         app:layout_constraintBottom_toBottomOf="parent"

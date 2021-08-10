@@ -1,7 +1,6 @@
 package com.example.cscb07project_patientappointmentapp;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,18 +11,18 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ListDoctorsActivity extends AppCompatActivity {
-    // creating variables for our list view.
+
     private ListView DocsLV;
     ArrayList<String> allDoctors;
     DatabaseReference reference;
@@ -34,29 +33,20 @@ public class ListDoctorsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_doctors);
 
-        // initializing variables for listviews.
-        DocsLV = (ListView)findViewById(R.id.idLVAllDoctors);
-        if (DocsLV == null){
-            System.out.println("FUCK YOU\n");
-        }
-        // initializing our array list
+        DocsLV = (ListView)findViewById(R.id.idLVFilteredDoctors);
         allDoctors = new ArrayList<String>();
         map = new HashMap<>();
-        // calling a method to get data from Firebase and set data to list view
         initializeListView();
         getDoctorClicked();
     }
 
     private void initializeListView() {
-        // creating a new array adapter for our list view.
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.doc_display_,R.id.DocInfo, allDoctors);
-        // below line is used for getting reference
-        // of our Firebase Database.
-        reference = FirebaseDatabase.getInstance().getReference("Doctors/");
-        // in below line we are calling method for add child event
-        // listener to get the child of our database.
-        //________________________________________________________________________________________________________________________
+        System.out.println("REACHED\n");
 
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.doc_display_,R.id.DocInfo, allDoctors);
+        reference = FirebaseDatabase.getInstance().getReference("Doctors/");
+        // in below line we are calling method for add child event listener to get the child of our database.
+        //________________________________________________________________________________________________________________________
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -74,16 +64,12 @@ public class ListDoctorsActivity extends AppCompatActivity {
 
     }
 
-
     public void getDoctorClicked(){
-
         DocsLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 String s = (String) parent.getItemAtPosition(position);
                 System.out.println("my string: " + s);
-
                 getDoctorObjectClickedOn(s);
             }
         });
@@ -92,19 +78,30 @@ public class ListDoctorsActivity extends AppCompatActivity {
     public void getDoctorObjectClickedOn(String s){
         String[] arrOfStr = s.split(", ");
         String u = arrOfStr[1];
-        System.out.println("username of clicked: " + u);
-
         Doctor d_clickedOn = map.get(u);
-//        System.out.println("GOT DOC INFO: " + d_clickedOn.getFullName() + ", " + d_clickedOn.getUsername() + ", " + d_clickedOn.getSpecialty());
-
         // now we want to switch screens and display availble times
     }
 
     public void filterThroughDocs(View view){
         System.out.println("WE CLICKED THE FILTER\n");
         Intent intent = new Intent(this, FilterDocs.class);
-        intent.putExtra("mapper", map);
+        intent.putExtra("hashmap", (Serializable) map);
         startActivity(intent);
+
+//        ArrayList<Object> object = new ArrayList<Object>();
+////        Intent intent = new Intent(Current.class, Transfer.class);
+//        Bundle args = new Bundle();
+//        args.putSerializable("ARRAYLIST",(Serializable)object);
+//        intent.putExtra("BUNDLE",args);
+////        startActivity(intent);
+
+//        intent.putExtra("mapper", (Serializable) map);
+
+//        ArrayList<String> dv = new ArrayList<String>();
+//        dv.add(new Patient());
+//        Bundle extras = new Bundle();
+//        extras.putSerializable("HashMap",dv);
+//        intent.putExtras(extras);
     }
 
 

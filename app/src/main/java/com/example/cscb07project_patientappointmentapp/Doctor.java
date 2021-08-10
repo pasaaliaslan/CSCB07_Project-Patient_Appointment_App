@@ -1,11 +1,15 @@
 package com.example.cscb07project_patientappointmentapp;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.firebase.Timestamp;
 import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Doctor extends Person {
+
 
     enum Specialty {
         IMMUNOLOGY,
