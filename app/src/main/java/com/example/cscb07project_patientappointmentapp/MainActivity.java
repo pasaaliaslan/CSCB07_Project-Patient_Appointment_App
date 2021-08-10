@@ -29,7 +29,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements Contract.View, View.OnClickListener {
     Button btnLogin;
-    TextView tvRegister;
     EditText edtEmail, edtPassword;
     private Presenter mLoginPresenter;
     ProgressDialog mProgressDialog;
@@ -40,11 +39,6 @@ public class MainActivity extends AppCompatActivity implements Contract.View, Vi
         setContentView(R.layout.activity_main);
 
         initViews();
-
-        if (LoginCheckIfCurrUserNull() == 1) {
-            // curr user != null
-            checkIfDocOrPat();
-        }
 
     }
     private void initViews() {
@@ -64,9 +58,12 @@ public class MainActivity extends AppCompatActivity implements Contract.View, Vi
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.LoginButton:
+                LoginCheckIfCurrUserNull();
                 checkLoginDetails();
+                //checkIfDocOrPat();
         }
     }
+
 
     private void checkLoginDetails() {
         if(!TextUtils.isEmpty(edtEmail.getText().toString()) && !TextUtils.isEmpty(edtPassword.getText().toString())){
@@ -80,7 +77,6 @@ public class MainActivity extends AppCompatActivity implements Contract.View, Vi
         }
     }
 
-
     public int LoginCheckIfCurrUserNull() {
         FirebaseUser f = FirebaseAuth.getInstance().getCurrentUser();
         if (f == null) {
@@ -93,46 +89,30 @@ public class MainActivity extends AppCompatActivity implements Contract.View, Vi
     }
 
 
-
-    public void checkIfDocOrPat() {
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference docRef = FirebaseDatabase.getInstance().getReference("Doctors/" + uid);
-        docRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    System.out.println("user is a doctor\n");
-                    updateUIDoc();
-                } else {
-                    System.out.println("user is a patient\n");
-                    updateUIPatient();
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                System.out.println("user is not doc or patient\n");
-            }
-        });
-
-    }
-
-
     private void initLogin(String email, String password) {
         mProgressDialog.show();
         mLoginPresenter.login(this, email, password);
     }
 
     @Override
-    public void onLoginSuccess(String message) {
+    public void onLoginSuccessDoctor(String message) {
         mProgressDialog.dismiss();
-        Toast.makeText(getApplicationContext(), "Successfully Logged in" , Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Successfully Logged in as Doctor" , Toast.LENGTH_LONG).show();
+        updateUIDoc();
     }
+
+    @Override
+    public void onLoginSuccessPatient(String message) {
+        mProgressDialog.dismiss();
+        Toast.makeText(getApplicationContext(), "Successfully Logged in as Patient" , Toast.LENGTH_LONG).show();
+        updateUIPatient();
+    }
+
 
     @Override
     public void onLoginFailure(String message) {
         mProgressDialog.dismiss();
-        Toast.makeText(getApplicationContext(),message , Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Login Failure. Please try again or Sign up as a Doctor or Patient", Toast.LENGTH_LONG).show();
     }
 
     /** Called when the user taps the SIGN UP as PATIENT button */

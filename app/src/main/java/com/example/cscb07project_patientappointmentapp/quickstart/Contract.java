@@ -5,7 +5,8 @@ import android.app.Activity;
 public interface Contract {
 
     interface View{
-        void onLoginSuccess(String message);
+        void onLoginSuccessDoctor(String message);
+        void onLoginSuccessPatient(String message);
         void onLoginFailure(String message);
     }
 
@@ -18,7 +19,8 @@ public interface Contract {
     }
 
     interface onLoginListener{
-        void onSuccess(String message);
+        void onSuccessDoctor(String message);
+        void onSuccessPatient(String message);
         void onFailure(String message);
     }
 

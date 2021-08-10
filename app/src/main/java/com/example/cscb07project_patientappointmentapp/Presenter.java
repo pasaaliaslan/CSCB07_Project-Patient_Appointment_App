@@ -18,12 +18,20 @@ public class Presenter implements Contract.Presenter, Contract.onLoginListener {
     @Override
     public void login(Activity activity, String email, String password) {
         mLoginInteractor.performFirebaseLogin(activity, email, password);
+        //mLoginInteractor.getcurrentUID();
+        //mLoginInteractor.getCurrentUser()
 
     }
 
     @Override
-    public void onSuccess(String message) {
-        mLoginView.onLoginSuccess(message);
+    public void onSuccessDoctor(String message) {
+        mLoginView.onLoginSuccessDoctor(message);
+
+    }
+
+    @Override
+    public void onSuccessPatient(String message) {
+        mLoginView.onLoginSuccessPatient(message);
 
     }
 

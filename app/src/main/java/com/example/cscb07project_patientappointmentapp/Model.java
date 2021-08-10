@@ -9,6 +9,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Model implements Contract.Model {
 
@@ -33,7 +38,26 @@ public class Model implements Contract.Model {
                     mOnLoginListener.onFailure(task.getException().toString());
                 }
                 if (task.isSuccessful()) {
-                    mOnLoginListener.onSuccess(task.getResult().toString());
+                    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    DatabaseReference docRef = FirebaseDatabase.getInstance().getReference("Doctors/" + uid);
+                    docRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                System.out.println("user is a doctor\n");
+                                mOnLoginListener.onSuccessDoctor(task.getResult().toString());
+                            } else {
+                                System.out.println("user is a patient\n");
+                                mOnLoginListener.onSuccessPatient(task.getResult().toString());
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError error) {
+                            System.out.println("user is not doc or patient\n");
+                        }
+                    });
+
                 } else {
                     mOnLoginListener.onFailure(task.getException().toString());
                 }
@@ -43,6 +67,11 @@ public class Model implements Contract.Model {
         });
     }
 
-
+//    public void getcurrentUID() {
+//        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//        if (uid == null) {
+//            mOnLoginListener.onFailure("USER DOES NOT EXIST\n");
+//        }
+//    }
 }
 
