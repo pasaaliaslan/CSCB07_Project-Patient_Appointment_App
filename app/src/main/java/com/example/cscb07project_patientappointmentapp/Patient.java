@@ -3,11 +3,14 @@ package com.example.cscb07project_patientappointmentapp;
 import com.google.firebase.Timestamp;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
 
 public class Patient extends Person {
 
     String DOB;
-    ArrayList<Appointment> pastAppointments;
+    List<Appointment> pastAppointments;
+//    ArrayList<String> str;
 
 
     public Patient(){ }
@@ -15,20 +18,20 @@ public class Patient extends Person {
     public Patient(String fullName, String username, String password, String gender, String DOB) {
         super(fullName, username, password, gender);
         this.DOB = DOB;
-        this.pastAppointments = new ArrayList<>();
+        this.pastAppointments = new ArrayList<Appointment>();
     }
 
 
     // No ID needed
-    public void bookAppointment(Timestamp startTime, String doctorName, String doctorSpecialty, String doctorGender, String description) {
-        Doctor doctor = DoctorIDtoDoctorAdapter.getDoctor(doctorName, doctorSpecialty, doctorGender);
-        //Need to check for time slots
-
-        Appointment appointment = new Appointment(doctor,this, startTime, description);
-        addAppointmentToAppointments(appointment, doctor);
-        addAppointmentToAppointments(appointment, this);
-        doctor.patients.add(this);
-    }
+//    public void bookAppointment(Appointment app, Doctor doc, String description) {
+//        Doctor doctor = DoctorIDtoDoctorAdapter.getDoctor(doctorName, doctorSpecialty, doctorGender);
+//        //Need to check for time slots
+//
+//        Appointment appointment = new Appointment(doctor,this, startTime, description);
+//        addAppointmentToAppointments(appointment, doctor);
+//        addAppointmentToAppointments(appointment, this);
+//        doctor.patients.add(this);
+//    }
 
 //    private void addAppointmentToAppointments (UID appointment, Person p) {
 //        int n = p.upcomingAppointments.size();
@@ -80,6 +83,15 @@ public class Patient extends Person {
     public String getDOB() { return DOB; }
 
     public void setDOB(String DOB) { this.DOB = DOB; }
+
+//    public LinkedHashSet<Appointment> getPastAppointments() { return pastAppointments; }
+//
+//    public void setPastAppointments(LinkedHashSet<Appointment> pastAppointments) { this.pastAppointments = pastAppointments; }
+
+
+    public List<Appointment> getPastAppointments() { return pastAppointments; }
+
+    public void setPastAppointments(List<Appointment> pastAppointments) { this.pastAppointments = pastAppointments; }
 }
 
 

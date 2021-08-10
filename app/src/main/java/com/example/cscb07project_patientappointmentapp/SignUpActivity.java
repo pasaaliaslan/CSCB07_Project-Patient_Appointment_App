@@ -18,6 +18,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -160,17 +162,27 @@ public class SignUpActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 System.out.println("got here\n");
                 if (task.isSuccessful()){
-                    //create patient object, add to firebase
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-                    //new
-                    UID pat_uid = new UID(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                    //done
-//                    Patient p2 = new Patient(fullname, username, password, gender, birthday, pat_uid);
-
-                    // alina changed to go with new constructor for testing purposes
                     Patient p2 = new Patient(fullname, username, password, gender, birthday);
-                    ref.child("Patients").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(p2);
 
+                    //testing to add upcoming appts
+//                    Calendar c1 = Calendar.getInstance();
+//                    System.out.println("The Current Date is:" + c1.getTime());
+//                    Date date = new Date(2002, 7, 19, 14, 0);
+//                    Appointment app = new Appointment(new Doctor(), "broke my leg", date);
+//                    p2.addAppointmentToAppointments(app);
+
+//                    Calendar c2 = Calendar.getInstance();
+//                    c2.add(1, Calendar.DATE);
+//                    Date date2 = new Date(2003, 8, 19, 14, 0);
+//                    Appointment app2 = new Appointment(new Doctor(), "broke my arm", date2);
+//                    p2.addAppointmentToAppointments(app2);
+//                    System.out.println("The Current Date is:" + c2.getTime());
+                    //testing done
+//                    p2.str.add("hi");
+//                    p2.str.add("hello");
+
+                    ref.child("Patients").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(p2);
                     startActivity(intent);
                 }
                 else{

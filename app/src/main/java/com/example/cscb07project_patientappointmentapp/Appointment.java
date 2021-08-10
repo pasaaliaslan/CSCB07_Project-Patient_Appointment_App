@@ -1,36 +1,82 @@
 package com.example.cscb07project_patientappointmentapp;
 
 
+import androidx.annotation.Keep;
+
 import com.google.firebase.Timestamp;
 
+import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Arrays;
 
-public class Appointment{
+public class Appointment implements Serializable{
 
     Doctor doctor;
     Patient patient;
-    AppointmentTime appointmentTime;
+    Date dateAndTime;
     String description;
 
-    public Appointment(Doctor doctor, Patient patient, Timestamp startTime, String description){
+    public Appointment(){}
+
+    public Appointment(Doctor doctor, String description, Date date){
         this.doctor = doctor;
-        this.startTime = startTime;
-        this.patient = patient;
+//        this.patient = patient;
+        this.dateAndTime = date;
         this.description = description;
-        this.uid = uid;
     }
 
-    public String getDate(){
-       String hold = this.startTime.toDate().toString();
-       List<String> splits = Arrays.asList(hold.split("\\s+"));
-       return(splits.get(0) + ", " + splits.get(1) + " " + splits.get(2) + ", " +splits.get(5));
+//    public String getDate(){
+//       String hold = this.startTime.toDate().toString();
+//       List<String> splits = Arrays.asList(hold.split("\\s+"));
+//       return(splits.get(0) + ", " + splits.get(1) + " " + splits.get(2) + ", " +splits.get(5));
+//    }
+//
+//    public String getTime(){
+//        String hold = this.startTime.toDate().toString();
+//        List<String> splits = Arrays.asList(hold.split("\\s+"));
+//        return(splits.get(3));
+//    }
+
+    public Doctor getDoctor() {
+        return doctor;
     }
 
-    public String getTime(){
-        String hold = this.startTime.toDate().toString();
-        List<String> splits = Arrays.asList(hold.split("\\s+"));
-        return(splits.get(3));
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+//
+//    public Calendar getCalendar() {
+//        return calendar;
+//    }
+//
+//    public void setCalendar(Calendar calendar) {
+//        this.calendar = calendar;
+//    }
+
+    public Date getDateAndTime() {
+        return dateAndTime;
+    }
+
+    public void setDateAndTime(Date dateAndTime) {
+        this.dateAndTime = dateAndTime;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
 

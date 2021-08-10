@@ -18,6 +18,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+
 public class PatientHomePage extends AppCompatActivity {
 
     @Override
@@ -25,7 +28,31 @@ public class PatientHomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_home_page);
 
+//        signOutPatientHomePage();
+//        addSomeAppts();
+
     }
+
+//    public void addSomeAppts(){
+////        endar.getInstance();
+//
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+//
+////        System.out.println("The Current Date is:" + c1.getTime());
+//        Appointment app = new Appointment(new Doctor(), "broke my leg");
+////        p2.addAppointmentToAppointments(app);
+//
+////        Calendar c2 = Calendar.getInstance();
+////        c2.add(1, Calendar.DATE);
+//        Appointment app2 = new Appointment(new Doctor(), "broke my arm");
+//
+//        ArrayList<Appointment> myAppts = new ArrayList<Appointment>();
+//        myAppts.add(app);
+//        myAppts.add(app2);
+//
+////        System.out.println("The Current Date is:" + c2.getTime());
+//        ref.child("Patients").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Appts").setValue(myAppts);
+//    }
 
 
     public void goToBookAppt(View view) {
@@ -38,6 +65,16 @@ public class PatientHomePage extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void signOutPatientHomePage(){
+        FirebaseAuth.getInstance().signOut();
+        if (FirebaseAuth.getInstance().getCurrentUser() == null){
+            System.out.println("Patient: After sign out: User == null\n");
+        }else{
+            System.out.println("Patient: After sign out: User != null ...... email adress: " + FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        }
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 
     public void signOutPatientHomePage(View view){
         FirebaseAuth.getInstance().signOut();
