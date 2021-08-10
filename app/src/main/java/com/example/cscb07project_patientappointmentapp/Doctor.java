@@ -10,7 +10,6 @@ import java.util.HashSet;
 
 public class Doctor extends Person {
 
-
     enum Specialty {
         IMMUNOLOGY,
         ANESTHESIOLOGY,
@@ -33,28 +32,17 @@ public class Doctor extends Person {
         SURGERY,
         UROLOGY
     }
-
     Specialty specialty;
     Timestamp startDuty;
     Timestamp endDuty;
     HashSet<Patient> patients;
 
-//    public Doctor(String fullName, String username, String password, String gender, String specialty, Timestamp startDuty, Timestamp endDuty, UID uid) {
-//        super(fullName, username, password, gender, uid);
-//        this.specialty = Specialty.valueOf(specialty.toUpperCase());
-//        this.startDuty = startDuty;
-//        this.endDuty = endDuty;
-//        this.patients = new HashSet<UID>();
-//    }
 
-    // alina changed for testing purposes
     public Doctor(){}
 
     public Doctor(String fullName, String username, String password, String gender, String specialty) {
         super(fullName, username, password, gender);
         this.specialty = Specialty.valueOf(specialty.toUpperCase());
-//        this.startDuty = startDuty;
-//        this.endDuty = endDuty;
         this.patients = new HashSet<>();
     }
 

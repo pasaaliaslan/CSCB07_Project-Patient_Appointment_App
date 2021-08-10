@@ -16,27 +16,18 @@ public abstract class Person implements Serializable {
     String password;
     Gender gender;
     ArrayList<Appointment> upcomingAppointments;
-    ArrayList<Appointment> pastAppointments;
+//    ArrayList<Appointment> pastAppointments;
 
-//    public Person(String fullName, String username, String password, String gender, UID uid){
-//        this.fullName = fullName;
-//        this.username = username;
-//        this.password = password;
-//        this.uid = uid;
-//        this.gender = Gender.valueOf(gender.toUpperCase());
-//        this.upcomingAppointments = new ArrayList<UID>();
-//        this.pastAppointments = new ArrayList<UID>();
-//    }
 
-    // alina changed for testing puposes
     public Person(){}
+
     public Person(String fullName, String username, String password, String gender){
         this.fullName = fullName;
         this.username = username;
         this.password = password;
         this.gender = Gender.valueOf(gender.toUpperCase());
         this.upcomingAppointments = new ArrayList<>();
-        this.pastAppointments = new ArrayList<>();
+//        this.pastAppointments = new ArrayList<>();
     }
 
     public void addAppointmentToAppointments (Appointment appointment, Person p) {

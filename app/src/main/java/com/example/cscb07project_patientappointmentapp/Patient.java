@@ -2,22 +2,21 @@ package com.example.cscb07project_patientappointmentapp;
 
 import com.google.firebase.Timestamp;
 
+import java.util.ArrayList;
+
 public class Patient extends Person {
 
     String DOB;
+    ArrayList<Appointment> pastAppointments;
 
-//    public Patient(String fullName, String username, String password, String gender, String DOB, UID uid) {
-//        super(fullName, username, password, gender, uid);
-//        this.DOB = DOB;
-//    }
 
-    // alina changed for testing purposes
     public Patient(){ }
+
     public Patient(String fullName, String username, String password, String gender, String DOB) {
         super(fullName, username, password, gender);
         this.DOB = DOB;
+        this.pastAppointments = new ArrayList<>();
     }
-    // done
 
 
     // No ID needed

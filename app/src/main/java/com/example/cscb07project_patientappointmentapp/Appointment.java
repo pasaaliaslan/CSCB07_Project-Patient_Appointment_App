@@ -10,9 +10,8 @@ public class Appointment{
 
     Doctor doctor;
     Patient patient;
-    Timestamp startTime;
+    AppointmentTime appointmentTime;
     String description;
-    UID uid;
 
     public Appointment(Doctor doctor, Patient patient, Timestamp startTime, String description){
         this.doctor = doctor;
