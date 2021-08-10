@@ -2,6 +2,7 @@ package com.example.cscb07project_patientappointmentapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.SortedList;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -144,7 +145,6 @@ public class SignUpActivity extends AppCompatActivity {
         Spinner spinner = (Spinner) findViewById(R.id.GenderSpinner);
         String gender = String.valueOf(spinner.getSelectedItem());
 
-
         System.out.println("got here\n");
         // authentication check
         FirebaseUser f = FirebaseAuth.getInstance().getCurrentUser();
@@ -154,7 +154,6 @@ public class SignUpActivity extends AppCompatActivity {
         else{
             System.out.println("CURRENT USER NOT NULL\n");
         }
-
 
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth.createUserWithEmailAndPassword(username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -168,14 +167,17 @@ public class SignUpActivity extends AppCompatActivity {
                     //testing to add upcoming appts
 //                    Calendar c1 = Calendar.getInstance();
 //                    System.out.println("The Current Date is:" + c1.getTime());
-//                    Date date = new Date(2002, 7, 19, 14, 0);
-//                    Appointment app = new Appointment(new Doctor(), "broke my leg", date);
+//                    Date date = new Date(2004, 7, 19, 14, 0);
+//                    Appointment app = new Appointment(new Doctor(), "broke my head", date);
 //                    p2.addAppointmentToAppointments(app);
-
-//                    Calendar c2 = Calendar.getInstance();
-//                    c2.add(1, Calendar.DATE);
+//
+////                    Calendar c2 = Calendar.getInstance();
+//                    Date date3 = new Date(2004, 7, 18, 12, 0);
+//                    Appointment app3 = new Appointment(new Doctor(), "broke my foot", date3);
+//                    p2.addAppointmentToAppointments(app3);
+////                    c2.add(1, Calendar.DATE);
 //                    Date date2 = new Date(2003, 8, 19, 14, 0);
-//                    Appointment app2 = new Appointment(new Doctor(), "broke my arm", date2);
+//                    Appointment app2 = new Appointment(new Doctor(), "broke my nose", date2);
 //                    p2.addAppointmentToAppointments(app2);
 //                    System.out.println("The Current Date is:" + c2.getTime());
                     //testing done

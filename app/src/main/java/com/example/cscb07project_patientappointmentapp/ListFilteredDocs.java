@@ -1,6 +1,5 @@
 package com.example.cscb07project_patientappointmentapp;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,11 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,7 +34,7 @@ public class ListFilteredDocs extends AppCompatActivity {
         String genToFilter = intent.getStringExtra("gender_filter");
         String specToFilter = intent.getStringExtra("spec_filter");
 
-        filteredDocsLV = (ListView)findViewById(R.id.idLVFilteredDoctors);
+        filteredDocsLV = (ListView)findViewById(R.id.idLVOneDocsAvailabilities);
         filteredDocs = new HashMap<>();
         filteredDocsInfo = new ArrayList<String>();
 

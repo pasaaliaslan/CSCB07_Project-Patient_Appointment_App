@@ -89,9 +89,9 @@ public class Patient extends Person {
 //    public void setPastAppointments(LinkedHashSet<Appointment> pastAppointments) { this.pastAppointments = pastAppointments; }
 
 
-    public List<Appointment> getPastAppointments() { return pastAppointments; }
-
-    public void setPastAppointments(List<Appointment> pastAppointments) { this.pastAppointments = pastAppointments; }
+//    public List<Appointment> getPastAppointments() { return pastAppointments; }
+//
+//    public void setPastAppointments(List<Appointment> pastAppointments) { this.pastAppointments = pastAppointments; }
 }
 
 

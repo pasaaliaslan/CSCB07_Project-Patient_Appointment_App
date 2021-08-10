@@ -13,16 +13,25 @@ import java.util.Arrays;
 
 public class Appointment implements Serializable{
 
-    Doctor doctor;
-    Patient patient;
+//    Doctor doctor;
+//    Patient patient;
+    String doc_uid;
+    String pat_uid;
     Date dateAndTime;
     String description;
 
     public Appointment(){}
 
-    public Appointment(Doctor doctor, String description, Date date){
-        this.doctor = doctor;
-//        this.patient = patient;
+//    public Appointment(Doctor doctor, String description, Date date){
+//        this.doctor = doctor;
+////        this.patient = patient;
+//        this.dateAndTime = date;
+//        this.description = description;
+//    }
+
+    public Appointment(String doctor, String pat, String description, Date date){
+        this.doc_uid = doctor;
+        this.pat_uid = pat;
         this.dateAndTime = date;
         this.description = description;
     }
@@ -39,21 +48,21 @@ public class Appointment implements Serializable{
 //        return(splits.get(3));
 //    }
 
-    public Doctor getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
+//    public Doctor getDoctor() {
+//        return doctor;
+//    }
+//
+//    public void setDoctor(Doctor doctor) {
+//        this.doctor = doctor;
+//    }
+//
+//    public Patient getPatient() {
+//        return patient;
+//    }
+//
+//    public void setPatient(Patient patient) {
+//        this.patient = patient;
+//    }
 //
 //    public Calendar getCalendar() {
 //        return calendar;
@@ -77,6 +86,22 @@ public class Appointment implements Serializable{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getDoc_uid() {
+        return doc_uid;
+    }
+
+    public void setDoc_uid(String doc_uid) {
+        this.doc_uid = doc_uid;
+    }
+
+    public String getPat_uid() {
+        return pat_uid;
+    }
+
+    public void setPat_uid(String pat_uid) {
+        this.pat_uid = pat_uid;
     }
 }
 

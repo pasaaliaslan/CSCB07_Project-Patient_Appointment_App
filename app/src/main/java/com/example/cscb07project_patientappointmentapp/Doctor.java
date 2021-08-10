@@ -5,11 +5,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.firebase.Timestamp;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class Doctor extends Person {
+public class Doctor extends Person implements Serializable {
 
     enum Specialty {
         IMMUNOLOGY,

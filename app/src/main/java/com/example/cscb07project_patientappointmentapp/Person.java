@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.TreeSet;
 
 public abstract class Person implements Serializable {
     protected enum Gender{
@@ -17,7 +18,7 @@ public abstract class Person implements Serializable {
     String username;
     String password;
     Gender gender;
-    List<Appointment> upcomingAppointments;
+    List<Appointment> upcomingAppts;
 
     public Person(){}
 
@@ -26,12 +27,12 @@ public abstract class Person implements Serializable {
         this.username = username;
         this.password = password;
         this.gender = Gender.valueOf(gender.toUpperCase());
-        this.upcomingAppointments = new ArrayList<Appointment>();
+        this.upcomingAppts = new ArrayList<Appointment>();
     }
 
 
     public void addAppointmentToAppointments (Appointment appointment) {
-        upcomingAppointments.add(appointment);
+        upcomingAppts.add(appointment);
     }
 
     // function for get next five appts
@@ -73,13 +74,9 @@ public abstract class Person implements Serializable {
         return gender;
     }
 
-    public List<Appointment> getUpcomingAppointments() {
-        return upcomingAppointments;
-    }
+    public List<Appointment> getUpcomingAppts() { return upcomingAppts; }
 
-    public void setUpcomingAppointments(List<Appointment> upcomingAppointments) {
-        this.upcomingAppointments = upcomingAppointments;
-    }
+    public void setUpcomingAppts(List<Appointment> upcomingAppts) { this.upcomingAppts = upcomingAppts; }
 
     public void setGender(Gender gender) {
         this.gender = gender;
