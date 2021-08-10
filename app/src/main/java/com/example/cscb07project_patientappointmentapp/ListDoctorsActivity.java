@@ -33,7 +33,7 @@ public class ListDoctorsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_doctors);
 
-        DocsLV = (ListView)findViewById(R.id.idLVOneDocsAvailabilities);
+        DocsLV = (ListView)findViewById(R.id.idLVAllDocs);
         allDoctors = new ArrayList<String>();
         map = new HashMap<>();
         initializeListView();
@@ -66,7 +66,7 @@ public class ListDoctorsActivity extends AppCompatActivity {
     }
 
     public void getDoctorClicked(){
-        System.out.println("got to school\n");
+//        System.out.println("got to school\n");
         DocsLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -83,9 +83,9 @@ public class ListDoctorsActivity extends AppCompatActivity {
         Doctor d_clickedOn = map.get(u);
         // now we want to switch screens and display availble times
 
-//        Intent intent = new Intent(this, OneDocsAvailableTimes.class);
-//        intent.putExtra("docClickedOn", d_clickedOn);
-//        startActivity(intent);
+        Intent intent = new Intent(this, OneDocsAvailableTimes.class);
+        intent.putExtra("docClickedOn", d_clickedOn);
+        startActivity(intent);
     }
 
     public void filterThroughDocs(View view){

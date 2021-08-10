@@ -20,12 +20,14 @@
         app:layout_constraintVertical_bias="0.023" />
 
     <ListView
-        android:id="@+id/idLVOneDocsAvailabilities"
-        android:layout_width="408dp"
-        android:layout_height="564dp"
+        android:id="@+id/idLVOneDocAvailabilities"
+        android:layout_width="380dp"
+        android:layout_height="569dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.872" />
+        app:layout_constraintVertical_bias="0.904" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

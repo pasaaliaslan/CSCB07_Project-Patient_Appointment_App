@@ -18,7 +18,7 @@ public class Appointment implements Serializable{
     String doc_uid;
     String pat_uid;
     Date dateAndTime;
-    String description;
+//    String description;
 
     public Appointment(){}
 
@@ -29,11 +29,11 @@ public class Appointment implements Serializable{
 //        this.description = description;
 //    }
 
-    public Appointment(String doctor, String pat, String description, Date date){
+    public Appointment(String doctor, String pat,  Date date){
         this.doc_uid = doctor;
         this.pat_uid = pat;
         this.dateAndTime = date;
-        this.description = description;
+//        this.description = description;
     }
 
 //    public String getDate(){
@@ -80,13 +80,13 @@ public class Appointment implements Serializable{
         this.dateAndTime = dateAndTime;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+//    public String getDescription() {
+//        return description;
+//    }
+//
+//    public void setDescription(String description) {
+//        this.description = description;
+//    }
 
     public String getDoc_uid() {
         return doc_uid;

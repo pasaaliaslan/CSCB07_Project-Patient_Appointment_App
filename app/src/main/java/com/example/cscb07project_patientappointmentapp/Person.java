@@ -3,6 +3,7 @@ package com.example.cscb07project_patientappointmentapp;
 import com.example.cscb07project_patientappointmentapp.UID;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -18,20 +19,29 @@ public abstract class Person implements Serializable {
     String username;
     String password;
     Gender gender;
+    String my_uid;
     List<Appointment> upcomingAppts;
 
-    public Person(){}
+    public Person(){
+//        if (upcomingAppts == null){
+//            upcomingAppts = new ArrayList<Appointment>();
+//        }
+    }
 
-    public Person(String fullName, String username, String password, String gender){
+    public Person(String fullName, String username, String password, String gender, String myuid){
         this.fullName = fullName;
         this.username = username;
         this.password = password;
+        this.my_uid = myuid;
         this.gender = Gender.valueOf(gender.toUpperCase());
         this.upcomingAppts = new ArrayList<Appointment>();
     }
 
 
     public void addAppointmentToAppointments (Appointment appointment) {
+        if (upcomingAppts == null){
+            upcomingAppts = new ArrayList<Appointment>();
+        }
         upcomingAppts.add(appointment);
     }
 
@@ -101,6 +111,9 @@ public abstract class Person implements Serializable {
 //        }
 //    }
 
+    public String getMy_uid() { return my_uid; }
+
+    public void setMy_uid(String my_uid) { this.my_uid = my_uid; }
 }
 
 

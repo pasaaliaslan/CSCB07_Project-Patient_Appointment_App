@@ -34,7 +34,7 @@ public class ListFilteredDocs extends AppCompatActivity {
         String genToFilter = intent.getStringExtra("gender_filter");
         String specToFilter = intent.getStringExtra("spec_filter");
 
-        filteredDocsLV = (ListView)findViewById(R.id.idLVOneDocsAvailabilities);
+        filteredDocsLV = (ListView)findViewById(R.id.idLVFilteredDocs);
         filteredDocs = new HashMap<>();
         filteredDocsInfo = new ArrayList<String>();
 

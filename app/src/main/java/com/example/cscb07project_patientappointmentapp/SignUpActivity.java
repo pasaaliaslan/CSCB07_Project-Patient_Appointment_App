@@ -162,7 +162,7 @@ public class SignUpActivity extends AppCompatActivity {
                 System.out.println("got here\n");
                 if (task.isSuccessful()){
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-                    Patient p2 = new Patient(fullname, username, password, gender, birthday);
+                    Patient p2 = new Patient(fullname, username, password, gender, birthday, FirebaseAuth.getInstance().getCurrentUser().getUid());
 
                     //testing to add upcoming appts
 //                    Calendar c1 = Calendar.getInstance();

@@ -15,8 +15,9 @@ public class Patient extends Person {
 
     public Patient(){ }
 
-    public Patient(String fullName, String username, String password, String gender, String DOB) {
-        super(fullName, username, password, gender);
+    public Patient(String fullName, String username, String password, String gender, String DOB, String my_uid) {
+        super(fullName, username, password, gender, my_uid);
+        System.out.println(username + "uid: " + my_uid);
         this.DOB = DOB;
         this.pastAppointments = new ArrayList<Appointment>();
     }
@@ -92,6 +93,11 @@ public class Patient extends Person {
 //    public List<Appointment> getPastAppointments() { return pastAppointments; }
 //
 //    public void setPastAppointments(List<Appointment> pastAppointments) { this.pastAppointments = pastAppointments; }
+
+    @Override
+    public String toString() {
+        return username + fullName;
+    }
 }
 
 

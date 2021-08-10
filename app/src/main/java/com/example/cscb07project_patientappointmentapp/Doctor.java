@@ -5,11 +5,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.firebase.Timestamp;
+import com.google.protobuf.ApiProto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.TreeSet;
 
 public class Doctor extends Person implements Serializable {
 
@@ -39,13 +44,115 @@ public class Doctor extends Person implements Serializable {
     List<Patient> patients;
 
 
-    public Doctor(){}
+    public Doctor(){ }
 
-    public Doctor(String fullName, String username, String password, String gender, String specialty) {
-        super(fullName, username, password, gender);
+    public Doctor(String fullName, String username, String password, String gender, String specialty, String my_uid) {
+        super(fullName, username, password, gender, my_uid);
         this.specialty = Specialty.valueOf(specialty.toUpperCase());
         this.patients = new ArrayList<Patient>();
     }
+
+    public HashMap <String, Date> getNextFiveAvailableAppointments(){
+        HashMap <String, Date> datesAvail = new HashMap<String, Date>();
+
+        if (this.upcomingAppts == null || this.upcomingAppts.size() == 0) { // dont think i need size == 0
+            this.upcomingAppts = new ArrayList<Appointment>();
+
+            Calendar cal1 = createCal(0);
+            Calendar cal2 = createCal(1);
+            Calendar cal3 = createCal(2);
+            Calendar cal4 = createCal(3);
+            Calendar cal5 = createCal(4);
+
+
+            datesAvail.put(cal1.getTime().toString(), cal1.getTime());
+            datesAvail.put(cal2.getTime().toString(), cal2.getTime());
+            datesAvail.put(cal3.getTime().toString(), cal3.getTime());
+            datesAvail.put(cal4.getTime().toString(), cal4.getTime());
+            datesAvail.put(cal5.getTime().toString(), cal5.getTime());
+
+//            ArrayList <Date> avail = new ArrayList<Date>();
+//            avail.add(cal1.getTime());
+//            avail.add(cal2.getTime());
+//            avail.add(cal3.getTime());
+//            avail.add(cal4.getTime());
+//            avail.add(cal5.getTime());
+//            ArrayList <Calendar> avail = new ArrayList<Calendar>();
+//            avail.add(cal1);
+//            avail.add(cal2);
+//            avail.add(cal3);
+//            avail.add(cal4);
+//            avail.add(cal5);
+            return datesAvail;
+        }
+        else{
+            datesAvail = getNextFiveAvailableAppointmentsHelpers();
+        }
+        return datesAvail;
+    }
+
+    public HashMap <String, Date> getNextFiveAvailableAppointmentsHelpers(){
+
+        boolean taken = false;
+        int count = 0;
+        HashMap <String, Date> availableTimes = new HashMap<String, Date>();
+
+        for (int i = 0; i < 5 ; i++){
+
+            for (int j = 9; j < 17 ; j++){
+
+                Calendar cal = createAndSetCal(j, i);
+                Date calDate = cal.getTime();
+
+                for (Appointment a: upcomingAppts){
+                    if ( calDate.equals(a.dateAndTime)){
+                        //  this appointment time is taken
+                        taken = true;
+                    }
+                }
+                if (!taken){
+                    availableTimes.put(cal.getTime().toString(), cal.getTime());
+                    count ++;
+                }
+                if (count >= 5){
+                    return availableTimes;
+                }
+            }
+        }
+        return availableTimes;
+
+//        Appointment sorter = upcomingAppts.get(0);
+//        for (Appointment a:  upcomingAppts){
+//            if (a.dateAndTime.before(sorter.dateAndTime)){
+//                sorter = a;
+//            }
+//        }
+//        // now sorter is the smallest in arraylist
+//        ArrayList
+    }
+
+    public Calendar createCal(int setForward){
+        Date a = new Date();
+        a.setMinutes(0);
+        a.setSeconds(0);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(a);
+        cal.add(Calendar.HOUR_OF_DAY, setForward);
+        return cal;
+    }
+
+    public Calendar createAndSetCal(int hour, int day){
+        Date a = new Date();
+        a.setMinutes(0);
+        a.setSeconds(0);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(a);
+        cal.set(Calendar.HOUR_OF_DAY, hour);
+        cal.add(Calendar.DATE, day);
+        return cal;
+    }
+
+
 
 //    public ArrayList<Appointment> seeNextAppointments(){
 //        ArrayList<Appointment> nextAppointments = new ArrayList<>();
