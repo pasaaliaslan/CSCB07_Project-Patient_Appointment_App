@@ -24,7 +24,10 @@ import java.util.Date;
 
 public class DoctorMain extends AppCompatActivity {
 
+    private ArrayList<Appointment> upcome;
+
     private ListView docNextAppLV;
+    private Appointment AppClicked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,25 +37,32 @@ public class DoctorMain extends AppCompatActivity {
         IntializePatientNextApptListView();
     }
 
-//
+
 //    public void getApptClicked(){
 //        docNextAppLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //                String dateString = (String) parent.getItemAtPosition(position);
-//                System.out.println("i picked date: " + dateString);
+//                System.out.println("i want to see info on app: " + dateString);
 //                getApptObjectClickedOn(dateString);
 //            }
 //        });
 //    }
 //
 //    public void getApptObjectClickedOn(String dateString){
-//        Date date_clickedOn = nextAvail.get(dateString);
-//        System.out.println("I SELECTED APPT---: " + date_clickedOn.toString());
-//        System.out.println("I SELECTED APPT: " + date_clickedOn.getYear() + "/" + date_clickedOn.getMonth() + "/" + date_clickedOn.getDate());
-//
+//        for (Appointment a: upcome){
+//            if (a.dateAndTime.toString().equals(dateString)){
+//                AppClicked = a;
+//            }
+//        }
+//        detailsOnAppView();
 //    }
-
+//
+//    public void detailsOnAppView(){
+//        Intent intent = new Intent(this, DisplayOneAppInfo.class);
+//        intent.putExtra("appClicked", AppClicked);
+//        startActivity(intent);
+//    }
 
     public void IntializePatientNextApptListView() {
 
@@ -68,7 +78,7 @@ public class DoctorMain extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Doctor doc = snapshot.getValue(Doctor.class);
-                ArrayList<Appointment> upcome = (ArrayList<Appointment>) doc.upcomingAppts;
+                upcome = (ArrayList<Appointment>) doc.upcomingAppts;
                 if (upcome == null) {
                     upcome = new ArrayList<Appointment>();
                 }

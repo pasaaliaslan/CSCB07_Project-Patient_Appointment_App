@@ -118,19 +118,19 @@ public class OneDocsAvailableTimes extends AppCompatActivity {
         dval.put(docClicked.my_uid, docClicked);
 
         ref.child("Patients").child(patientUID).addListenerForSingleValueEvent(
-                new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        p = snapshot.getValue(Patient.class);
-                        p.addAppointmentToAppointments(bookApp);
-                        pval.put(p.my_uid, p);
-                        ref.child("Patients").updateChildren(pval);
-                    }
-                    @Override
-                    public void onCancelled(@NonNull  DatabaseError error) {
-                        //@org.jetbrains.annotations.NotNull
-                    }
-                });
+            new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    p = snapshot.getValue(Patient.class);
+                    p.addAppointmentToAppointments(bookApp);
+                    pval.put(p.my_uid, p);
+                    ref.child("Patients").updateChildren(pval);
+                }
+                @Override
+                public void onCancelled(@NonNull  DatabaseError error) {
+                    //@org.jetbrains.annotations.NotNull
+                }
+            });
 //        System.out.println("printing p: " + p);
         ref.child("Doctors").updateChildren(dval);
 

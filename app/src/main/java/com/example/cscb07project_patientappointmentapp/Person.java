@@ -21,6 +21,7 @@ public abstract class Person implements Serializable {
     Gender gender;
     String my_uid;
     List<Appointment> upcomingAppts;
+    List<String> visited;
 
     public Person(){
 //        if (upcomingAppts == null){
@@ -35,6 +36,7 @@ public abstract class Person implements Serializable {
         this.my_uid = myuid;
         this.gender = Gender.valueOf(gender.toUpperCase());
         this.upcomingAppts = new ArrayList<Appointment>();
+        this.visited = new ArrayList<String>();
     }
 
 
@@ -44,6 +46,8 @@ public abstract class Person implements Serializable {
         }
         upcomingAppts.add(appointment);
     }
+
+//    public void
 
     // function for get next five appts
 //
@@ -60,39 +64,30 @@ public abstract class Person implements Serializable {
 //        this.upcomingAppointments = upcomingAppointments;
 //    }
 
-    public String getFullName() {
-        return fullName;
-    }
+    public String getFullName() { return fullName; }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
+    public void setFullName(String fullName) { this.fullName = fullName; }
 
-    public String getUsername() {
-        return username;
-    }
+    public String getUsername() { return username; }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    public void setUsername(String username) { this.username = username; }
 
     public String getPassword() { return password; }
 
     public void setPassword(String password) { this.password = password; }
 
-    public Gender getGender() {
-        return gender;
-    }
+    public Gender getGender() { return gender; }
 
     public List<Appointment> getUpcomingAppts() { return upcomingAppts; }
 
     public void setUpcomingAppts(List<Appointment> upcomingAppts) { this.upcomingAppts = upcomingAppts; }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
+    public void setGender(Gender gender) { this.gender = gender; }
 
-    //    public void addAppointmentToAppointments (Appointment appointment, Person p) {
+    public List<String> getVisited() { return visited; }
+
+    public void setVisited(List<String> visited) { this.visited = visited; }
+//    public void addAppointmentToAppointments (Appointment appointment, Person p) {
 //        int n = p.upcomingAppointments.size();
 //
 //        // Base Case
