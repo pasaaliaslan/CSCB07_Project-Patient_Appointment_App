@@ -102,5 +102,8 @@
     <string name="Docs"> Doctors </string>
     <string name="Availabilities"> Availabilities </string>
     <string name="Filter"> Filter </string>
+
+    <string name="Thankyou"> Thank you for booking the following appointment! </string>
+    <string name="back_to_patient_home"> Back To Home </string>
 </resources>
 

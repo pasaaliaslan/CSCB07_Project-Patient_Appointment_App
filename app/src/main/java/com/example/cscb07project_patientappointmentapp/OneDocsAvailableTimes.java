@@ -27,16 +27,12 @@ import java.util.TreeSet;
 
 public class OneDocsAvailableTimes extends AppCompatActivity {
 
-//    HashMap<String, Doctor> allDocs;
-//    HashMap<String, Doctor> filteredDocs;
-//    ArrayList<String> filteredDocsInfo;
     private ListView oneDocAvailabilitiesLV;
     Patient p;
     Appointment bookApp;
     Doctor docClicked;
     ArrayList<String> dateStrings;
     HashMap <String, Date> nextAvail;
-//    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,22 +54,21 @@ public class OneDocsAvailableTimes extends AppCompatActivity {
 //            System.out.println("nextavail is null\n");
 //        }
         nextAvail = docClicked.getNextFiveAvailableAppointments();
+
         IntializeDocAvailabilitiesListView(nextAvail);
-//        System.out.println("here we go\n");
     }
 
 
     public void IntializeDocAvailabilitiesListView( HashMap <String, Date> nextAvail){
         dateStrings = new ArrayList<String>();
-//        for (Date c: nextAvail){
-//            dateStrings.add(c.toString());
-//        }
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.doc_display_,R.id.DocInfo, dateStrings);
         Iterator hashIterator = nextAvail.entrySet().iterator();
 
+        System.out.println("avali: " + docClicked.getUsername());
         while (hashIterator.hasNext()) {
             Map.Entry entry = (Map.Entry)hashIterator.next();
             Date d1 = (Date)entry.getValue();
+            System.out.println("Availabilities: " + d1.toString());
             dateStrings.add(d1.toString());
         }
         oneDocAvailabilitiesLV.setAdapter(adapter);
@@ -99,7 +94,17 @@ public class OneDocsAvailableTimes extends AppCompatActivity {
 //        Intent intent = new Intent(this, OneDocsAvailableTimes.class);
 //        intent.putExtra("docClickedOn", d_clickedOn);
 //        startActivity(intent);
+        showBookingComplete();
     }
+
+    public void showBookingComplete(){
+
+        Intent intent = new Intent(this, ThankYouForBooking.class);
+        intent.putExtra("docBookedWith", docClicked);
+        intent.putExtra("apptBookedComplete", bookApp);
+        startActivity(intent);
+    }
+
 
     public void updatePersonInDatabase(Date datePicked){
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
@@ -125,7 +130,7 @@ public class OneDocsAvailableTimes extends AppCompatActivity {
                         //@org.jetbrains.annotations.NotNull
                     }
                 });
-        System.out.println("printing p: " + p);
+//        System.out.println("printing p: " + p);
         ref.child("Doctors").updateChildren(dval);
 
 //        Map<String, Object> postValues = new HashMap<String,Object>();
