@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -39,7 +40,7 @@ public class ListFilteredDocs extends AppCompatActivity {
         filteredDocsInfo = new ArrayList<String>();
 
         IntializeListFilteredDocsListView(genToFilter, specToFilter);
-//        getDoctorClicked();
+        getFilteredDoctorClicked();
     }
 
 
@@ -57,6 +58,28 @@ public class ListFilteredDocs extends AppCompatActivity {
             }
         }
         filteredDocsLV.setAdapter(adapter);
+    }
+
+    public void getFilteredDoctorClicked(){
+        filteredDocsLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String s = (String) parent.getItemAtPosition(position);
+                System.out.println("my string: " + s);
+                getFilteredDoctorObjectClickedOn(s);
+            }
+        });
+    }
+
+    public void getFilteredDoctorObjectClickedOn(String s){
+        String[] arrOfStr = s.split(", ");
+        String u = arrOfStr[1];
+        Doctor dFiltered_clickedOn = filteredDocs.get(u);
+        // now we want to switch screens and display availble times
+
+        Intent intent = new Intent(this, OneDocsAvailableTimes.class);
+        intent.putExtra("docClickedOn", dFiltered_clickedOn);
+        startActivity(intent);
     }
 
 

@@ -54,7 +54,7 @@ public class Doctor extends Person implements Serializable {
         this.patients = new ArrayList<Patient>();
     }
 
-    public HashMap <String, Date> getNextFiveAvailableAppointments(){
+    public HashMap<String, Date> giveNextFiveAvailableAppointments(){
         HashMap <String, Date> datesAvail = new HashMap<String, Date>();
 
 //        if (this.upcomingAppts == null || this.upcomingAppts.size() == 0) { // dont think i need size == 0
@@ -94,7 +94,7 @@ public class Doctor extends Person implements Serializable {
         if (this.upcomingAppts == null ) { // dont think i need size == 0
             this.upcomingAppts = new ArrayList<Appointment>();
         }
-        datesAvail = getNextFiveAvailableAppointmentsHelpers();
+        datesAvail = giveNextFiveAvailableAppointmentsHelpers();
 
         Iterator hashIterator = datesAvail.entrySet().iterator();
         System.out.println("IN DOC avali: " + username);
@@ -111,7 +111,7 @@ public class Doctor extends Person implements Serializable {
         return datesAvail;
     }
 
-    public HashMap <String, Date> getNextFiveAvailableAppointmentsHelpers(){
+    public HashMap<String, Date> giveNextFiveAvailableAppointmentsHelpers(){
 
         boolean taken = false;
         int count = 0;

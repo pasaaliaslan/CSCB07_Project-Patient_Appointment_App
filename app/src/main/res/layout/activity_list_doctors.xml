@@ -52,8 +52,8 @@
     <!--</RelativeLayout>-->
     <ListView
         android:id="@+id/idLVAllDocs"
-        android:layout_width="408dp"
-        android:layout_height="564dp"
+        android:layout_width="394dp"
+        android:layout_height="535dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

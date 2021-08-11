@@ -53,7 +53,7 @@ public class OneDocsAvailableTimes extends AppCompatActivity {
 //        if (nextAvail == null){
 //            System.out.println("nextavail is null\n");
 //        }
-        nextAvail = docClicked.getNextFiveAvailableAppointments();
+        nextAvail = docClicked.giveNextFiveAvailableAppointments();
 
         IntializeDocAvailabilitiesListView(nextAvail);
     }

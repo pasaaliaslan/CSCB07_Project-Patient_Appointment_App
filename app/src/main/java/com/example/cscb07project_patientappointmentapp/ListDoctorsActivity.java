@@ -81,7 +81,6 @@ public class ListDoctorsActivity extends AppCompatActivity {
         String[] arrOfStr = s.split(", ");
         String u = arrOfStr[1];
         Doctor d_clickedOn = map.get(u);
-        // now we want to switch screens and display availble times
 
         Intent intent = new Intent(this, OneDocsAvailableTimes.class);
         intent.putExtra("docClickedOn", d_clickedOn);
