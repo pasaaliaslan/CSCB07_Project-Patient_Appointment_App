@@ -18,7 +18,11 @@ public class Appointment implements Serializable{
     String doc_uid;
     String pat_uid;
     Date dateAndTime;
+    String docFullName;
 //    String description;
+
+    // the only thing changed to start implementing view appointments is the consdtructor
+    // of appointment now includes doc name
 
     public Appointment(){}
 
@@ -29,10 +33,11 @@ public class Appointment implements Serializable{
 //        this.description = description;
 //    }
 
-    public Appointment(String doctor, String pat,  Date date){
+    public Appointment(String doctor, String pat,  Date date, String docname){
         this.doc_uid = doctor;
         this.pat_uid = pat;
         this.dateAndTime = date;
+        this.docFullName = docname;
 //        this.description = description;
     }
 

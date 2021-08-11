@@ -110,7 +110,7 @@ public class OneDocsAvailableTimes extends AppCompatActivity {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
         String patientUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        bookApp = new Appointment(docClicked.my_uid, patientUID, datePicked);
+        bookApp = new Appointment(docClicked.my_uid, patientUID, datePicked, docClicked.fullName);
         Map<String, Object> pval = new HashMap<String,Object>();
         Map<String, Object> dval = new HashMap<String,Object>();
         docClicked.addAppointmentToAppointments(bookApp);
