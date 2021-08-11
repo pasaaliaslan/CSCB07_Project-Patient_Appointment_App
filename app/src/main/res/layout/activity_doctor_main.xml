@@ -32,128 +32,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.045" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="256dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:background="#009688"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/nextAppointmentMessage"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:gravity="center"
-            android:text="@string/NextAppointment"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-        <TextView
-            android:id="@+id/nextAppointmentDate"
-            android:layout_width="match_parent"
-            android:layout_height="190dp"
-            android:gravity="center"
-            android:text="@string/ExampleDate"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
-        android:layout_height="256dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:background="#009688"
-        android:orientation="vertical"
-        android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <Button
-            android:id="@+id/Appointment2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Appointment2" />
-
-        <Button
-            android:id="@+id/Appointment3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Appointment3" />
-
-        <Button
-            android:id="@+id/Appointment4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Appointment4" />
-
-        <Button
-            android:id="@+id/Appointment5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Appointment5" />
-
-        <Button
-            android:id="@+id/Appointment6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Appointment6" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="0dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginBottom="32dp"
-        android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingTop="8dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-
-        <Button
-            android:id="@+id/seeAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/SeeAll" />
-
-        <Space
-            android:layout_width="8dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/Profile" />
-    </LinearLayout>
-
     <Button
         android:id="@+id/DoctorMainSignOut"
         android:layout_width="87dp"
@@ -167,5 +45,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.01" />
+
+    <Button
+        android:id="@+id/DocMainSeeMyPatients"
+        android:layout_width="247dp"
+        android:layout_height="45dp"
+        android:text="@string/see_my_patients"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.962" />
+
+    <TextView
+        android:id="@+id/DocMainYourNextAppts"
+        android:layout_width="359dp"
+        android:layout_height="44dp"
+        android:gravity="center"
+        android:text="@string/NextAppointment"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.104" />
+
+    <ListView
+        android:id="@+id/DocMainNextAppointmentsLV"
+        android:layout_width="353dp"
+        android:layout_height="480dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.648" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

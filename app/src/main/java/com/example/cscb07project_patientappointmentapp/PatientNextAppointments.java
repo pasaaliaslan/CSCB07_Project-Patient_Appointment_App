@@ -58,7 +58,7 @@ public class PatientNextAppointments extends AppCompatActivity {
                     upcome = new ArrayList<Appointment>();
                 }
                 for (Appointment ap: upcome){
-                    nextApptStrings.add(ap.dateAndTime.toString());
+                    nextApptStrings.add(ap.dateAndTime.toString() + ", " + ap.docFullName);
                 }
 //                for (String s: nextApptStrings){
 //                    System.out.println("next appt: " + s);

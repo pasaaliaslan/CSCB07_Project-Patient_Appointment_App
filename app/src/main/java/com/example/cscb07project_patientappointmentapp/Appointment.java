@@ -108,6 +108,14 @@ public class Appointment implements Serializable{
     public void setPat_uid(String pat_uid) {
         this.pat_uid = pat_uid;
     }
+
+    public String getDocFullName() {
+        return docFullName;
+    }
+
+    public void setDocFullName(String docFullName) {
+        this.docFullName = docFullName;
+    }
 }
 
 

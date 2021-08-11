@@ -21,7 +21,7 @@ public class ThankYouForBooking extends AppCompatActivity {
         Appointment appBooked = (Appointment)intent.getSerializableExtra("apptBookedComplete");
         displayBookedAppointment(appBooked, docBooked);
 
-        System.out.println("FUCKKKKK\n");
+//        System.out.println("FUCKKKKK\n");
     }
 
     public void displayBookedAppointment(Appointment appBooked, Doctor docBooked){
@@ -35,7 +35,7 @@ public class ThankYouForBooking extends AppCompatActivity {
 
 
     public void backToPatientHomeScreen(View view){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, PatientHomePage.class);
         startActivity(intent);
     }
 
