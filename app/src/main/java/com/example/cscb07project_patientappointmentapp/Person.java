@@ -47,6 +47,13 @@ public abstract class Person implements Serializable {
         upcomingAppts.add(appointment);
     }
 
+    public void addToVisited(){
+        if (visited == null){
+            visited = new ArrayList<String>();
+        }
+    }
+
+
 //    public void
 
     // function for get next five appts
