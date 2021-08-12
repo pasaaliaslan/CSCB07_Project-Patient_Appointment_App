@@ -8,7 +8,7 @@ android {
     defaultConfig {
         applicationId "com.example.cscb07project_patientappointmentapp"
         minSdkVersion 16
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -48,6 +48,10 @@ dependencies {
     //implementation 'com.afollestad:sectioned-recyclerview:0.2.3'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.android.support:multidex:1.0.3'
+//    testCompile 'junit:junit:4.12'
+//    testCompile 'org.powermock:powermock:1.6.5'
+//    testCompile 'org.powermock:powermock-module-junit4:1.6.5'
+//    testCompile 'org.powermock:powermock-api-mockito:1.6.5'
 
     implementation 'com.android.support:support-annotations:28.0.0'
     implementation 'androidx.annotation:annotation:1.1.0'

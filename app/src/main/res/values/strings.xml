@@ -70,9 +70,9 @@
     </string-array>
 
 
-    <string name="Patient_next_appointments">Your next appointments:</string>
+    <string name="Patient_next_appointments">Your next Appointments</string>
     <string name="place_holder">place holder</string>
-    <string name="NextAppointment">Your Next Appointment: </string>
+    <string name="NextAppointment">Your Next Appointments: </string>
     <string name="ExampleDate"> Wed Aug 08 2021 09:00 EDT </string>
     <string name="SeeAll"> See All </string>
     <string name="Profile"> Profile </string>
@@ -101,5 +101,9 @@
     <string name="FullName"> Full Name </string>
     <string name="Docs"> Doctors </string>
     <string name="Availabilities"> Availabilities </string>
-</resources>
+    <string name="Filter"> Filter </string>
 
+    <string name="Thankyou"> Thank you for booking the following appointment! </string>
+    <string name="back_to_patient_home"> Back To Home </string>
+    <string name="see_my_patients"> See My Patients </string>
+</resources>

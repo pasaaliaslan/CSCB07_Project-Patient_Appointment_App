@@ -17,6 +17,7 @@ public class Presenter implements Contract.Presenter, Contract.onLoginListener {
 
     @Override
     public void login(Activity activity, String email, String password) {
+
         mLoginInteractor.performFirebaseLogin(activity, email, password);
         //mLoginInteractor.getcurrentUID();
         //mLoginInteractor.getCurrentUser()

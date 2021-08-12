@@ -33,13 +33,18 @@ public class MainActivity extends AppCompatActivity implements Contract.View, Vi
     private Presenter mLoginPresenter;
     ProgressDialog mProgressDialog;
 
+    private static final String TAG = "MainActivity";
+    public static final String FULLNAME_KEY = "fullname";
+    public static final String USERNAME_KEY = "username";
+    public static final String GENDER_KEY = "gender";
+    public static final String APPOINTMENTS_KEY = "appointment";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         initViews();
-
     }
     private void initViews() {
         Toast.makeText(getApplicationContext(), "Internet Required" , Toast.LENGTH_SHORT).show();
