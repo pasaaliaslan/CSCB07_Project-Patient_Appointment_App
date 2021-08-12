@@ -1,6 +1,5 @@
 package com.example.cscb07project_patientappointmentapp;
 
-
 import com.example.cscb07project_patientappointmentapp.UID;
 
 import java.io.Serializable;
@@ -48,9 +47,12 @@ public abstract class Person implements Serializable {
         upcomingAppts.add(appointment);
     }
 
-    public void addToVisited(){
+    public void addToVisited(String uid){
         if (visited == null){
             visited = new ArrayList<String>();
+        }
+        if (!visited.contains(uid)){
+            visited.add(uid);
         }
     }
 

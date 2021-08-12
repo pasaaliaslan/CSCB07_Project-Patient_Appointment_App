@@ -34,7 +34,10 @@ public class DoctorMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_main);
 
+
         IntializePatientNextApptListView();
+        getAppClicked();
+
     }
 
 
@@ -91,6 +94,35 @@ public class DoctorMain extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+    }
+
+    public void getAppClicked(){
+        docNextAppLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String stringOfAppclicked = (String) parent.getItemAtPosition(position);
+                System.out.println("i i i : " + stringOfAppclicked);
+                getAppObjectClickedOn(stringOfAppclicked);
+            }
+        });
+    }
+
+    public void getAppObjectClickedOn(String stringOfAppclicked){
+        System.out.println("why i an : " + stringOfAppclicked);
+        Appointment app_clickedon = new Appointment(); // this is very bad, should not initialize
+        if (upcome == null){
+            System.out.println("its NULER\n");
+        }
+        for (Appointment appt: upcome){
+            System.out.println("whys this nukll: " + appt.dateAndTime.toString());
+            if (appt.dateAndTime.toString().equals(stringOfAppclicked)){
+                app_clickedon = appt;
+            }
+        }
+
+        Intent intent = new Intent(this, OneOfDocsApptInfo.class);
+        intent.putExtra("appClickedOn", app_clickedon);
+        startActivity(intent);
     }
 
 

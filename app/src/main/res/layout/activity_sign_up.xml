@@ -71,7 +71,7 @@
         android:layout_height="36dp"
         android:ems="10"
         android:gravity="center"
-        android:hint="@string/Username"
+        android:hint="@string/email"
         android:inputType="textPersonName"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintBottom_toBottomOf="parent"
