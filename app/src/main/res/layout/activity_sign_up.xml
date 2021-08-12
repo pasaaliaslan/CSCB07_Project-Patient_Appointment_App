@@ -65,21 +65,21 @@
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.435" />
 
-<EditText
-    android:id="@+id/SignUpUsername"
-    android:layout_width="151dp"
-    android:layout_height="36dp"
-    android:ems="10"
-    android:gravity="center"
-    android:hint="@string/Username"
-    android:inputType="textPersonName"
-    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.146"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.346" />
+    <EditText
+        android:id="@+id/SignUpUsername"
+        android:layout_width="151dp"
+        android:layout_height="36dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/email"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.146"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.346" />
 
 <EditText
     android:id="@+id/SignUpFullName"

@@ -82,6 +82,12 @@ public class ListFilteredDocs extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //added
+    public void backToPatientHomeScreenFromListFilteredDocs(View view){
+        Intent intent = new Intent(this, PatientHomePage.class);
+        startActivity(intent);
+    }
+
 
     public void signOutFromListFilteredDocs(View view){
         FirebaseAuth.getInstance().signOut();

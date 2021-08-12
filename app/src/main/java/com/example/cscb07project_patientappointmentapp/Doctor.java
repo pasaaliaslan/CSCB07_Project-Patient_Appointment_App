@@ -141,11 +141,11 @@ public class Doctor extends Person implements Serializable {
 
                 if (!taken){
                     availableTimes.put(cal.getTime().toString(), cal.getTime());
-                    count ++;
+//                    count ++;
                 }
-                if (count >= 5){
-                    return availableTimes;
-                }
+//                if (count >= 5){
+//                    return availableTimes;
+//                }
                 taken = false;
             }
         }
@@ -168,6 +168,7 @@ public class Doctor extends Person implements Serializable {
 //        // now sorter is the smallest in arraylist
 //        ArrayList
     }
+
 
     public Calendar createCal(int setForward){
         Date a = new Date();

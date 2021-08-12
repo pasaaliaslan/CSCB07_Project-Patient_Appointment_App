@@ -87,7 +87,7 @@
     <string name="LoggedInAs"> Logged in as: </string>
     <string name="GenderString"> Gender: </string>
     <string name="SpecializationString"> Specialization: </string>
-    <string name="Birthday"> Date Of Birth </string>
+    <string name="Birthday"> Date Of Birth MM/DD/YYYY</string>
 
     <string name="PasswordConfirmation">Confirm Password</string>
 
@@ -102,9 +102,11 @@
     <string name="Docs"> Doctors </string>
     <string name="Availabilities"> Availabilities </string>
     <string name="Filter"> Filter </string>
+    <string name="email"> Email </string>
 
     <string name="Thankyou"> Thank you for booking the following appointment! </string>
     <string name="back_to_patient_home"> Back To Home </string>
     <string name="see_my_patients"> See My Patients </string>
+    <string name="cannot_click"> Note: You can not click on these appointments. </string>
 </resources>
 

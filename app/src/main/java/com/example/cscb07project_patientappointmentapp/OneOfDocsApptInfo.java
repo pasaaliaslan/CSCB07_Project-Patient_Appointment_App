@@ -47,6 +47,9 @@ public class OneOfDocsApptInfo extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         Patient docsPat = snapshot.getValue(Patient.class);
                         String allDocsVis = "";
+                        if (docsPat.visitedDocFullName == null){
+                            System.out.println("visited null\n");
+                        }
                         for (String s: docsPat.visitedDocFullName){
                             allDocsVis += ", ";
                             allDocsVis += s;

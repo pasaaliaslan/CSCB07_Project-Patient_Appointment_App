@@ -110,6 +110,9 @@ public class DoctorMain extends AppCompatActivity {
     public void getAppObjectClickedOn(String stringOfAppclicked){
         System.out.println("why i an : " + stringOfAppclicked);
         Appointment app_clickedon = new Appointment(); // this is very bad, should not initialize
+        if (upcome == null){
+            System.out.println("its NULER\n");
+        }
         for (Appointment appt: upcome){
             System.out.println("whys this nukll: " + appt.dateAndTime.toString());
             if (appt.dateAndTime.toString().equals(stringOfAppclicked)){
