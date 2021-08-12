@@ -115,6 +115,9 @@ public class OneDocsAvailableTimes extends AppCompatActivity {
         Map<String, Object> pval = new HashMap<String,Object>();
         Map<String, Object> dval = new HashMap<String,Object>();
         docClicked.addAppointmentToAppointments(bookApp);
+        //new
+        docClicked.addToVisited(bookApp.pat_uid);
+        //done
         dval.put(docClicked.my_uid, docClicked);
 
         ref.child("Patients").child(patientUID).addListenerForSingleValueEvent(
@@ -123,6 +126,10 @@ public class OneDocsAvailableTimes extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     p = snapshot.getValue(Patient.class);
                     p.addAppointmentToAppointments(bookApp);
+                    //new
+                    p.addToVisited(bookApp.doc_uid);
+                    p.addToVisitedDocFullName(bookApp.docFullName);
+                    //done
                     pval.put(p.my_uid, p);
                     ref.child("Patients").updateChildren(pval);
                 }

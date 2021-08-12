@@ -10,12 +10,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CSCB07ProjectPatientAppointmentApp">
-        <activity android:name=".DisplayOneAppInfo"></activity>
+        <activity android:name=".OneOfDocsApptInfo"
+            android:parentActivityName=".DoctorMain"/>
+        <activity android:name=".DisplayOneAppInfo" />
         <activity android:name=".ThankYouForBooking" />
         <activity android:name=".OneDocsAvailableTimes" />
         <activity
-            android:name=".ListFilteredDocs"
-            android:parentActivityName=".FilterDocs" /> <!-- <activity android:name=".DocListViewItems"></activity> -->
+            android:name=".ListFilteredDocs" /> <!-- <activity android:name=".DocListViewItems"></activity> -->
         <activity
             android:name=".FilterDocs"
             android:parentActivityName=".ListDoctorsActivity" />

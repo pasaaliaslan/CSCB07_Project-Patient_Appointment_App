@@ -116,6 +116,7 @@ public class Appointment implements Serializable{
     public void setDocFullName(String docFullName) {
         this.docFullName = docFullName;
     }
+
 }
 
 

@@ -10,6 +10,7 @@ public class Patient extends Person {
 
     String DOB;
     List<Appointment> pastAppointments;
+    List<String> visitedDocFullName;
 //    ArrayList<String> str;
 
 
@@ -20,6 +21,16 @@ public class Patient extends Person {
         System.out.println(username + "uid: " + my_uid);
         this.DOB = DOB;
         this.pastAppointments = new ArrayList<Appointment>();
+        this.visitedDocFullName = new ArrayList<String>();
+    }
+
+    public void addToVisitedDocFullName(String n){
+        if (visitedDocFullName == null){
+            visitedDocFullName = new ArrayList<String>();
+        }
+        if (!visitedDocFullName.contains(n)){
+            visitedDocFullName.add(n);
+        }
     }
 
 
@@ -97,6 +108,14 @@ public class Patient extends Person {
     @Override
     public String toString() {
         return username + fullName;
+    }
+
+    public List<String> getVisitedDocFullName() {
+        return visitedDocFullName;
+    }
+
+    public void setVisitedDocFullName(List<String> visitedDocFullName) {
+        this.visitedDocFullName = visitedDocFullName;
     }
 }
 
